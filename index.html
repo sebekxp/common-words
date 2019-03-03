@@ -7,31 +7,80 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Common Words</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 
 <body>
-    <h1>MOST COMMON WORDS IN ENGLISH</h1>
+    <!-- <h1>MOST COMMON WORDS IN ENGLISH</h1> -->
     <input id="search-box" class="search-box" placeholder="Search.." title="Type word to find">
-
     <section>
-        <div class="list-of-words">
-            <div class="progresBar" id="progresBar">
-            <div class="progBar" id="progBar"></div>
-            <span>30% Complete</span>
-
+        <aside>
+            <nav>
+                <div class="progresBar" id="progresBar">
+                    <div class="progBar" id="progBar"></div>
+                </div>
+                <span id="complete">0 %</span>
+            </nav>
+            <div class="list-of-words">
+                <div class="word-title wt1" onmouseover="openWord('a1')" title="Click to change the name">
+                   <div class="circle-icon"><i class="deleteElem fas fa-times"></i></div>
+                    <p class="w1 blank-circle far fa-circle"></p>
+                    <p class="words">a</p>
+                </div>
+                <div class="word-title wt2" onmouseover="openWord('a2')" title="Click to change the name">
+                   <div class="circle-icon"> <i class="deleteElem fas fa-times"></i></div>
+                    <p class="w2 blank-circle far fa-circle"></p>
+                    <p class="words">ability</p>
+                </div>
+                <div class="word-title wt3" onmouseover="openWord('a3')" title="Click to change the name">
+                   <div class="circle-icon"> <i class="deleteElem fas fa-times"></i></div>
+                    <p class="w3 blank-circle far fa-circle"></p>
+                    <p class="words">able</p>
+                </div>
+                <div class="word-title wt4" onmouseover="openWord('a4')">
+                   <div class="circle-icon"> <i class="deleteElem fas fa-times"></i></div>
+                    <p class="w4 blank-circle far fa-circle"></p>
+                    <p class="words">about</p>
+                </div>
+                <div class="word-title wt5">
+                   <div class="circle-icon"> <i class="deleteElem fas fa-times"></i></div>
+                    <p class="w5 blank-circle far fa-circle"></p>
+                    <p class="words" onmouseover="openWord('a5')">above</p>
+                </div>
+                <div class="word-title wt6">
+                   <div class="circle-icon"> <i class="deleteElem fas fa-times"></i></div>
+                    <p class="w6 blank-circle far fa-circle"></p>
+                    <p class="words" onmouseover="openWord('a6')">accept</p>
+                </div>
+                <div class="word-title wt7">
+                   <div class="circle-icon"> <i class="deleteElem fas fa-times"></i></div>
+                    <p class="w7 blank-circle far fa-circle"></p>
+                    <p class="words" onmouseover="openWord('a7')">according</p>
+                </div>
+                <div class="word-title wt8">
+                   <div class="circle-icon"> <i class="deleteElem fas fa-times"></i></div>
+                    <p class="w8 blank-circle far fa-circle"></p>
+                    <p class="words" onmouseover="openWord('a8')">account</p>
+                </div>
+                <div class="word-title wt9">
+                   <div class="circle-icon"> <i class="deleteElem fas fa-times"></i></div>
+                    <p class="w9 blank-circle far fa-circle"></p>
+                    <p class="words" onmouseover="openWord('a9')">across</p>
+                </div>
+                <div class="word-title wt10">
+                   <div class="circle-icon"> <i class="deleteElem fas fa-times"></i></div>
+                    <p class="w10 blank-circle far fa-circle"></p>
+                    <p class="words" onmouseover="openWord('a10')" class="words">act</p>
+                </div>
             </div>
-            <p class = "words" onmouseover="openWord('a1')"><i class="far fa-circle"></i></i>a</p>
-            <p class = "words" onmouseover="openWord('a2')"><i class="far fa-circle"></i>ability</p>
-            <p class = "words" onmouseover="openWord('a3')"><i class="far fa-circle"></i>able</p>
-            <p class = "words" onmouseover="openWord('a4')"><i class="far fa-circle"></i>about</p>
-            <p class = "words" onmouseover="openWord('a5')"><i class="far fa-circle"></i>above</p>
-            <p class = "words" onmouseover="openWord('a6')"><i class="far fa-circle"></i>accept</p>
-            <p class = "words" onmouseover="openWord('a7')"><i class="far fa-circle"></i>according</p>
-            <p class = "words" onmouseover="openWord('a8')"><i class="far fa-circle"></i>account</p>
-            <p class = "words" onmouseover="openWord('a9')"><i class="far fa-circle"></i>across</p>
-            <p class = "words" onmouseover="openWord('a10')"><i class="far fa-circle"></i>act</p>
-        </div>
+            <div class="add-btn">
+                <p class="add-element-circle fas fa-plus-circle"></p>
+                <input type="text" placeholder="add name" class="inputName">
+            </div>
+        </aside>
+
+
         <div id="a1" class="word-content">
             <h2>a</h2>
             <p>przedimek nieokreślony używany z rzeczownikami policzalnymi w liczbie pojedynczej,
@@ -79,8 +128,6 @@
             <h3>Trzy</h3>
             <p>Trzecie najczesciej uzywane slowko</p>
         </div>
-
-
     </section>
 
     <script src="scrp.js"></script>

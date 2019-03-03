@@ -2,79 +2,33 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #2F2F2F;
 }
+
+p {
+    margin: 0 0;
+}
+
 h1 {
     font-size: 50px;
-}
-section {
-    width: 50%;
+    color: white;
 }
 
-.list-of-words {
-    box-sizing: border-box;
-    float: left;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
-    width: 30%;
-    height: 449.8px; 
-    overflow: auto;
-}
-.far {
-    color: #888888;
-    margin-right: 10px;
-}
-.fas {
-    color: #888888;
-    margin-right: 10px;
-}
+.deleteElem {
+    font-size: 16px;
+    color: #CCCCCC;
 
-.progresBar {
-    border: 1px solid black;
-    border-radius: 20px; 
-    margin: 10px  10px;
 }
-
-
-.progBar {
-    width: 10px;
-    height: 15px;
-    background-color: #00F85C;
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-    transition: width 1.5s;
-}
-.progresBar span {
-    position: absolute;
-    margin-left: 60px;
-    font-size: 12.5px;
-    font-weight: 600;
-    cursor: text;
-    margin-top: 5px; 
-}
-.list-of-words p {
-    display: block;
-    border-bottom: 1px solid black;
-    color: black;
-    padding: 16px 16px;
-    text-align: left;
-    cursor: pointer;
-    margin: 0 0;
-    font-size: 18px;
-}
-.list-of-words p:hover{
-    background-color: #ddd
-}
-
-
-.word-content {
+.circle-icon {
     display: flex;
-    flex-direction: column;
-    border: 1px solid #ccc;
-    height: 449.39px;    
-    display: none;
-}
-#a1 {
-   display: block; 
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: red;   
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    right: 5px;;
 }
 
 .search-box {
@@ -82,5 +36,116 @@ section {
     padding: 10px;
     border: 2px solid #ddd;
     margin-bottom: 10px;
+    margin-top: 50px;
     width: 200px;
+}
+
+section {
+    width: 800px;
+    display: flex;
+}
+
+aside {
+    width: 230px;
+}
+
+nav {
+    display: flex;
+    background-color: #CCCCCC;
+    flex-direction: column;
+    text-align: center;
+}
+
+.progresBar {
+    border: 1.5px solid black;
+    padding: .1px 0px;
+    border-radius: 20px; 
+    margin: 5px  10px;
+}
+
+.progBar {
+    width: 0;
+    height: 15px;
+    background-color: #008000;
+    border-radius: 8px;
+    transition: width 1.5s;
+}
+
+ span {
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: text;
+    padding: 5px 0;
+}
+
+.list-of-words {
+    box-sizing: border-box;
+    background-color: #f1f1f1;
+    width: 230px;
+    height: 348px; 
+    overflow: auto;
+}
+
+.word-title {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2px;
+}
+
+.word-title:hover p {
+    background-color: #a2a5a2;	
+}
+
+.word-title:nth-of-type(1) {
+    margin-top: 5px;
+}
+
+.words {
+    font-size: 20px;
+    padding: 11.8px 11.6px;
+    width: 100%;
+    cursor: pointer;
+    background-color: #CCCCCC
+}
+
+.blank-circle,
+.filled-circle {
+    color:#008000;
+    padding: 13px 13px;
+    margin-right: 1px;
+    font-size: 20px;
+    background-color: #CCCCCC
+}
+
+.word-content {
+    display: flex;
+    background-color: #fff;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    height: 449.39px;
+    width: 700px;    
+    display: none;
+}
+
+#a1 {
+   display: block; 
+}
+.add-element-circle {
+    font-size: 25px;
+    color: greenyellow;
+    margin: 15px 10px;;
+    background-color: transparent;
+}
+.add-btn {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2px;
+}
+.add-btn-text {
+    font-size: 20px;
+    padding: 8px 8px;
+    width: 100%;
+    border: 2px solid black
 }

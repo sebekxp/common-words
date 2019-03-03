@@ -1,3 +1,18 @@
+let knownWords = 0;
+let valueofLastItem = getValueOfLastItem();
+
+function getValueOfLastItem() {
+    let temp = document.querySelectorAll('.word-title');
+    console.log(temp)
+    let lastElementValue = temp[temp.length - 1].classList[1];
+    console.log(lastElementValue)
+    lastElementValue = lastElementValue.substring(2, lastElementValue.length);
+    lastElementValue = parseInt(lastElementValue, 10);
+
+    return lastElementValue;
+}
+
+
 function openWord(wordName) {
 
     let wordContent = document.getElementsByClassName("word-content");
@@ -7,31 +22,110 @@ function openWord(wordName) {
     document.getElementById(wordName).style.display = "block";
 }
 function searchWord() {
-    let filter = document.getElementById("search-box").value.toUpperCase();
+    let valeFromSearchBox = document.getElementById("search-box").value;
     let listOfWords = document.getElementsByClassName("list-of-words")[0];
-    let button = listOfWords.getElementsByClassName("words");
+    let wordsContent = listOfWords.getElementsByClassName("words");
+    let wordTitle = document.getElementsByClassName('word-title');
 
-    for (var i = 0; i < button.length; i++) {
-        if (button[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
-            button[i].style.display = "";
+    for (var i = 0; i < wordsContent.length; i++) {
+        if (wordsContent[i].innerHTML.indexOf(valeFromSearchBox) > -1) {
+            wordTitle[i].style.display = "";
         } else {
-            button[i].style.display = "none";
+            wordTitle[i].style.display = "none";
         }
     }
 }
-let knownWords = 0;
+
+
+document.querySelector('.w1').addEventListener('click', progresBar);
+document.querySelector('.w2').addEventListener('click', progresBar);
+document.querySelector('.w3').addEventListener('click', progresBar);
+document.querySelector('.w4').addEventListener('click', progresBar);
+document.querySelector('.w5').addEventListener('click', progresBar);
+document.querySelector('.w6').addEventListener('click', progresBar);
+document.querySelector('.w7').addEventListener('click', progresBar);
+document.querySelector('.w8').addEventListener('click', progresBar);
+document.querySelector('.w9').addEventListener('click', progresBar);
+document.querySelector('.w10').addEventListener('click', progresBar);
 
 document.querySelector('#search-box').addEventListener('keyup', searchWord);
-document.querySelector('.far').addEventListener('click', progresBar);
+document.querySelector('.add-element-circle').addEventListener('click', createNavigationWord);
 
-function progresBar() {
-    if(knownWords <= 10)
-        document.querySelector('.progBar').style.width = knownWords * 10 + '%';
-    if(document.querySelector('.words i').classList[0] === "far")
-        document.querySelector('.words i').className = "fas fa-check-circle";
-    else
-        document.querySelector('.words i').className = "far fa-circle";
-
-    knownWords++;
-    console.log(knownWords);
+let allCircleIcon = document.querySelectorAll('.circle-icon');
+for (var i = 0; i < allCircleIcon.length; i++) {
+    allCircleIcon[i].addEventListener('click', deleteNavigationWord);
 }
+
+function updateProgresBar() {
+    var updatedValueOfProgressBar = parseInt(knownWords * (100 / valueofLastItem), 10);
+    document.querySelector('#complete').innerHTML = updatedValueOfProgressBar + ' %';
+    document.querySelector('.progBar').style.width = updatedValueOfProgressBar + ' %';
+}
+
+function progresBar(evt) {
+    if (knownWords <= valueofLastItem && evt.target.classList[2] === "far") {
+        knownWords++;
+    }
+    else {
+        knownWords--;
+    }
+    updateProgresBar();
+    if (evt.target.classList[2] === "far") {
+        evt.target.className = evt.target.classList[0] + " filled-circle fas fa-check-circle";
+    }
+    else {
+        evt.target.className = evt.target.classList[0] + " blank-circle far fa-circle";
+    }
+}
+
+function createNavigationWord() {
+    updateProgresBar();
+    var wordTitleDiv = document.createElement("div");
+    var circleIconDiv = document.createElement("div");
+    var pFirstElem = document.createElement("p");
+    var pSecondElem = document.createElement("p");
+    var deleteElemI = document.createElement("i");
+
+    deleteElemI.className = "deleteElem fas fa-times";
+    circleIconDiv.className = "circle-icon";
+    wordTitleDiv.className = "word-title wt" + (valueofLastItem + 1);
+    pFirstElem.className = "w" + (valueofLastItem + 1)+ " blank-circle far fa-circle"
+    pSecondElem.className = "words";
+
+    pFirstElem.addEventListener('click', progresBar);
+    circleIconDiv.addEventListener('click', deleteNavigationWord);
+
+    if (document.querySelector('.inputName').value === "")
+        pSecondElem.innerHTML = "Default name"
+    else
+        pSecondElem.innerHTML = document.querySelector('.inputName').value
+
+
+    pSecondElem.setAttribute('contenteditable', "true");
+    pSecondElem.setAttribute('title', "Click to change the name");
+    wordTitleDiv.setAttribute("onmouseover", "openWord('a1')");
+
+    circleIconDiv.appendChild(deleteElemI);
+    wordTitleDiv.appendChild(circleIconDiv);
+    wordTitleDiv.appendChild(pFirstElem);
+    wordTitleDiv.appendChild(pSecondElem);
+
+    document.querySelector('.list-of-words').appendChild(wordTitleDiv);
+    document.querySelector('.inputName').value = "";
+    valueofLastItem = getValueOfLastItem();
+    console.log(valueofLastItem)
+}
+
+function deleteNavigationWord(evt) {
+    updateProgresBar();
+    evt.currentTarget.parentElement.remove();
+    valueofLastItem = getValueOfLastItem();
+    console.log(valueofLastItem);
+}
+
+
+
+
+// document.querySelectorAll('p[class^="w"]:not(div)').forEach((elem) => {
+//     elem.addEventListener('click', progresBar);
+// })
