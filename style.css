@@ -123,7 +123,6 @@ nav {
 }
 
 .word-content {
-    display: flex;
     background-color: #fff;
     flex-direction: column;
     border: 1px solid #ccc;
@@ -134,7 +133,7 @@ nav {
 }
 
 #a1 {
-   display: block; 
+   display: flex; 
 }
 .add-element-circle {
     font-size: 25px;
