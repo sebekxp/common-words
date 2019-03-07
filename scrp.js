@@ -1,13 +1,15 @@
-let knownWords = 0;
 let valueofLastItem = getValueOfLastItem();
-let updatedValueOfProgressBar = 0;
-const words = objWords;
+const words = OBJWORDS;
 
-document.querySelector('#complete').innerHTML = knownWords + ' / ' + valueofLastItem;
+document.querySelector('#complete').innerHTML = 0 + ' / ' + valueofLastItem;
+createContentOfWord(words[0]);
 
 
 function openWord(evt) {
-    console.log(evt.currentTarget)
+    let index = 0;
+    for (let i = 0; i < words.length; i++)
+        if (words[i].wordName === evt.target.innerHTML)
+            index = i;
 
     let wordContentAllParagraph = document.querySelectorAll('.word-content p');
     let wordContentAllH2 = document.querySelectorAll('.word-content h2');
@@ -17,13 +19,8 @@ function openWord(evt) {
     for (let i of wordContentAllH2) {
         i.innerHTML = "";
     }
-    
 
-    wordContent.innerHTML = "";
-    // for (let i = 0; i < wordContent.length; i++) {
-    //     wordContent[i].style.display = "none";
-    // }
-    // document.getElementById(wordName).style.display = "block";
+    createContentOfWord(words[index]);
 }
 function searchWord() {
     let valeFromSearchBox = document.getElementById("search-box").value.toUpperCase();;
@@ -41,10 +38,10 @@ function searchWord() {
 }
 
 function updateProgressBar() {
-    knownWords = document.querySelectorAll('.filled-circle');
-    updatedValueOfProgressBar = parseInt(knownWords.length * (100 / valueofLastItem), 10);
-    document.querySelector('#complete').innerHTML = knownWords.length + ' / ' + valueofLastItem;
-    document.querySelector('.progBar').style.width = updatedValueOfProgressBar + '%';
+    const KNOW_WORDS = document.querySelectorAll('.filled-circle');
+    const WIDTH = KNOW_WORDS.length * (100 / valueofLastItem);
+    document.querySelector('#complete').innerHTML = KNOW_WORDS.length + ' / ' + valueofLastItem;
+    document.querySelector('.progBar').style.width = WIDTH + '%';
 }
 
 function progresBar(evt) {
@@ -59,14 +56,14 @@ function progresBar(evt) {
 }
 function useEnterToCreateNewWord() {
     if (event.which == 13 || event.keyCode == 13) {
-        createNavigationWord();
+        addElement();
     }
 }
-function createContentOfWord({wordName, wordContent}) {
+function createContentOfWord({ wordName, wordContent }) {
 
-    let wordContentContainer = document.querySelector('.word-content');
+    const wordContentContainer = document.querySelector('.word-content');
 
-    let nameWord = document.createElement("h2")
+    const nameWord = document.createElement("h2")
     nameWord.innerHTML = wordName;
     wordContentContainer.appendChild(nameWord);
 
@@ -77,12 +74,14 @@ function createContentOfWord({wordName, wordContent}) {
         wordContentContainer.appendChild(contents);
     }
 }
+
 function createNavigationWord(wordObj) {
-    let wordTitleDiv = document.createElement("div");
-    let circleIconDiv = document.createElement("div");
-    let blankCircleDiv = document.createElement("p");
-    let wordNameDiv = document.createElement("p");
-    let deleteElemI = document.createElement("i");
+    // wordObj.sort();
+    const wordTitleDiv = document.createElement("div");
+    const circleIconDiv = document.createElement("div");
+    const blankCircleDiv = document.createElement("p");
+    const wordNameDiv = document.createElement("p");
+    const deleteElemI = document.createElement("i");
 
     wordTitleDiv.className = "word-title";
     circleIconDiv.className = "circle-icon";
@@ -95,31 +94,15 @@ function createNavigationWord(wordObj) {
 
     wordNameDiv.innerHTML = wordObj.wordName;
 
-    //                         IF USER ADD 
-    // ===========================================================================||
-    // ||if (document.querySelector('.input-name').value === "")                  ||
-    // ||    wordNameDiv.innerHTML = "Default name"                               ||
-    // ||else                                                                     ||
-    // ||   wordNameDiv.innerHTML = document.querySelector('.input-name').value   ||
-    // ||wordNameDiv.setAttribute('contenteditable', "true");                     |
-        // wordNameDiv.setAttribute('title', "Click to change the name");|
-    // =============================================================================
-
-
     wordTitleDiv.addEventListener("mouseover", openWord);
     circleIconDiv.appendChild(deleteElemI);
     wordTitleDiv.appendChild(circleIconDiv);
     wordTitleDiv.appendChild(blankCircleDiv);
     wordTitleDiv.appendChild(wordNameDiv);
 
-    createContentOfWord(wordObj); 
-
     document.querySelector('.list-of-words').appendChild(wordTitleDiv);
-    document.querySelector('.input-name').value = "";
-
     valueofLastItem = getValueOfLastItem();
     updateProgressBar();
-
 }
 
 function deleteNavigationWord(evt) {
@@ -134,16 +117,27 @@ for (let word of words) {
 
 
 let allBlankCircle = document.querySelectorAll('.blank-circle')
-for (var i = 0; i < allBlankCircle.length; i++) {
+for (let i = 0; i < allBlankCircle.length; i++) {
     allBlankCircle[i].addEventListener('click', progresBar);
 }
 
+function addElement() {
+    const inputValue = document.querySelector('.input-name').value;
+    if (inputValue === "")
+        words.push({ wordName: 'default name', wordContent: [] })
+    else
+        words.push({ wordName: inputValue, wordContent: [] })
+
+    createNavigationWord(words[words.length - 1]);
+    document.querySelector('.input-name').value = "";
+}
+
 document.querySelector('#search-box').addEventListener('keyup', searchWord);
-document.querySelector('.add-element-circle').addEventListener('click', createNavigationWord);
+document.querySelector('.circle-icon-add-element').addEventListener('click', addElement);
 document.querySelector('.input-name').addEventListener('keypress', useEnterToCreateNewWord);
 
 let allCircleIcon = document.querySelectorAll('.circle-icon');
-for (var i = 0; i < allCircleIcon.length; i++) {
+for (let i = 0; i < allCircleIcon.length; i++) {
     allCircleIcon[i].addEventListener('click', deleteNavigationWord);
 }
 

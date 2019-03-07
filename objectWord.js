@@ -1,9 +1,4 @@
-/*  
-        <div id="a3" class="word-content">
-            <h3>able</h3>
-            <p>zdolny (do czegoś)</p>
-        </div>*/
-const objWords = [
+const OBJWORDS = [
     {
         wordName: 'a',
         wordContent: ["Przedimek nieokreślony używany z rzeczownikami policzalnymi w liczbie pojedynczej, których wymowa zaczyna się od spółgłoski",
@@ -26,6 +21,39 @@ const objWords = [
         ]
     },
 
+    {
+        wordName: 'about',
+        wordContent: []
+    },
 
+    {
+        wordName: 'above',
+        wordContent: []
+    },
+
+    {
+        wordName: 'accept',
+        wordContent: []
+    },
+
+    {
+        wordName: 'according',
+        wordContent: []
+    },
+
+    {
+        wordName: 'account',
+        wordContent: []
+    },
+
+    {
+        wordName: 'across',
+        wordContent: []
+    },
+
+    {
+        wordName: 'act',
+        wordContent: []
+    },
 
 ];

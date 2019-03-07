@@ -139,29 +139,49 @@ nav {
     height: 449.39px;
     padding: 0 30px;
     width: 700px;    
-    /* display: none; */
 }
 .word-content p {
     margin: 30px 0;
 }
 .input-name {
-    width: 150px;
-    height: 25px;;
+    width: 160px;
+    height: 30px;
+    border-radius: 3px;
+    padding: 0 3px;
+    font-size: 16px;
 }
 
 #a1 {
    display: flex; 
 }
-.add-element-circle {
-    font-size: 25px;
-    color: greenyellow;
-    margin: 15px 10px;;
-    background-color: transparent;
+.circle-icon-add-element {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 7px 7px;
+    color:#28a745;
+    padding: 14px 14px;
+    border-radius: 50%;
+    font-size: 20px;
+    border: 2px solid #28a745;
+
 }
+.circle-icon-add-element:hover {
+    background-color: #28a745;
+}
+.circle-icon-add-element:hover i{
+    color: white;
+}
+
+.circle-icon-add-element i{
+    position: absolute; 
+}
+
 .add-btn {
     display: flex;
     align-items: center;
-    margin-bottom: 2px;
+    margin-top: 6px;
 }
 .add-btn-text {
     font-size: 20px;
