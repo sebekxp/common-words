@@ -138,7 +138,8 @@ nav {
     border: 1px solid #ccc;
     height: 449.39px;
     padding: 0 30px;
-    width: 700px;    
+    width: 700px;
+    overflow: auto;
 }
 .word-content p {
     margin: 30px 0;

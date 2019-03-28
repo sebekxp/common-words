@@ -59,16 +59,16 @@ function useEnterToCreateNewWord() {
         addElement();
     }
 }
-function createContentOfWord({ wordName, wordContent }) {
+function createContentOfWord({ wordName, wordTranslate, examples }) {
 
     const wordContentContainer = document.querySelector('.word-content');
 
     const nameWord = document.createElement("h2")
-    nameWord.innerHTML = wordName;
+    nameWord.innerHTML = wordName + " - " + wordTranslate;
     wordContentContainer.appendChild(nameWord);
 
-    let contents = [wordContent.length]
-    for (it of wordContent) {
+    let contents = [examples.length]
+    for (it of examples) {
         contents = document.createElement('p');
         contents.innerHTML = it;
         wordContentContainer.appendChild(contents);
@@ -93,7 +93,6 @@ function createNavigationWord(wordObj) {
     circleIconDiv.addEventListener('click', deleteNavigationWord);
 
     wordNameDiv.innerHTML = wordObj.wordName;
-
     wordTitleDiv.addEventListener("mouseover", openWord);
     circleIconDiv.appendChild(deleteElemI);
     wordTitleDiv.appendChild(circleIconDiv);
