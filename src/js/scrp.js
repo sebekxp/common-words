@@ -1,21 +1,22 @@
 let valueofLastItem = getValueOfLastItem();
 const words = OBJWORDS;
+let wordContDivIn = [];
 
 document.querySelector("#complete").innerHTML = 0 + " / " + valueofLastItem;
-createContentOfWord(words[0]);
 
 for (let word of words) {
   createNavigationWord(word);
+  createContentOfWord(word);
 }
 
 function createNavigationWord(wordObj) {
-  const wordTitleDiv = document.createElement("div");
+  const navigationWord = document.createElement("div");
   const circleIconDiv = document.createElement("div");
   const blankCircleDiv = document.createElement("p");
   const wordNameDiv = document.createElement("p");
   const deleteElemI = document.createElement("i");
 
-  wordTitleDiv.className = "word-title";
+  navigationWord.className = "navigation-word";
   circleIconDiv.className = "circle-icon";
   blankCircleDiv.className = "blank-circle far fa-circle";
   wordNameDiv.className = "words";
@@ -25,13 +26,13 @@ function createNavigationWord(wordObj) {
   circleIconDiv.addEventListener("click", deleteNavigationWord);
 
   wordNameDiv.innerHTML = wordObj.wordName;
-  wordTitleDiv.addEventListener("mouseover", hoverMouseAndDisplayWordContent);
+  navigationWord.addEventListener("mouseover", hoverMouseAndDisplayWordContent);
   circleIconDiv.appendChild(deleteElemI);
-  wordTitleDiv.appendChild(circleIconDiv);
-  wordTitleDiv.appendChild(blankCircleDiv);
-  wordTitleDiv.appendChild(wordNameDiv);
+  navigationWord.appendChild(circleIconDiv);
+  navigationWord.appendChild(blankCircleDiv);
+  navigationWord.appendChild(wordNameDiv);
 
-  document.querySelector(".list-of-words").appendChild(wordTitleDiv);
+  document.querySelector(".list-of-words").appendChild(navigationWord);
   valueofLastItem = getValueOfLastItem();
   updateProgressBar();
 }
@@ -49,44 +50,65 @@ function updateProgressBar() {
 }
 
 function hoverMouseAndDisplayWordContent(evt) {
-  let emptyString = "";
-  let index = 0;
-
   for (let i = 0; i < words.length; i++) {
     if (words[i].wordName === evt.target.innerHTML) {
-      index = i;
+      wordContDivIn[i].style.display = "";
+    } else {
+      wordContDivIn[i].style.display = "none";
     }
   }
-
-  let wordContentAllParagraph = document.querySelectorAll(".word-content p");
-  let wordContentAllH2 = document.querySelectorAll(".word-content h2");
-
-  for (let i of wordContentAllParagraph) {
-    i.innerHTML = emptyString;
-  }
-  for (let i of wordContentAllH2) {
-    i.innerHTML = emptyString;
-  }
-  createContentOfWord(words[index]);
 }
 
 function createContentOfWord({ wordName, wordTranslate, examples }) {
-  const wordContentContainer = document.querySelector(".word-content");
-  const nameWord = document.createElement("h2");
-  
-  nameWord.innerHTML = wordName + " - " + wordTranslate;
-  wordContentContainer.appendChild(nameWord);
+  // const paragraph = document.createElement("p");
+  const keyWordHeader = document.createElement("div");
+  const headerH2 = document.createElement("h2");
+  const firstExampleWords = document.createElement("div");
+  const moreExamples = document.createElement("div");
+  let wordContentContainer = document.querySelector(".word-content");
+
+  wordContDivIn.push(document.createElement("div"));
 
   let exampleContents = [examples.length];
-  for (let example of examples) {
+  let example = examples;
+  for (var i = 0; i < 3; i++) {
     exampleContents = document.createElement("p");
-    exampleContents.innerHTML = example;
-    wordContentContainer.appendChild(exampleContents);
+    example[i] = example[i].split(" ");
+    for (let j = 0; j < example[i].length; j++) {
+      if (example[i][j] === wordName) {
+        example[i][j] = "<b>" + example[i][j] + "</b>";
+      }
+    }
+    example[i] = example[i].join(" ");
+    exampleContents.innerHTML = example[i];
+    firstExampleWords.appendChild(exampleContents);
   }
+  exampleContainers = document.createElement("div");
+
+
+  exampleContainers.className = "examples-container";
+  keyWordHeader.className = "key-word-header";
+  keyWordHeader.id = "key-word-header";
+  headerH2.innerHTML = wordName + " - " + wordTranslate;
+  firstExampleWords.className = "first-example-word";
+  firstExampleWords.id = "first-example-word";
+  moreExamples.id = "more-examples";
+  moreExamples.className = "more-examples";
+
+  keyWordHeader.appendChild(headerH2);
+  exampleContainers.appendChild(keyWordHeader);
+  exampleContainers.appendChild(firstExampleWords);
+  exampleContainers.appendChild(moreExamples);
+  if(wordName!== 'a')
+    wordContDivIn[wordContDivIn.length - 1].style.display = "none";
+  wordContDivIn[wordContDivIn.length - 1].appendChild(exampleContainers);
+  wordContentContainer.appendChild(wordContDivIn[wordContDivIn.length - 1]);
 }
 
 function searchWord() {
-  let searchBoxValue = document.getElementById("search-box").value.toUpperCase();
+  let searchBoxValue = document
+    .getElementById("search-box")
+    .value.toUpperCase();
   let listOfWords = document.getElementsByClassName("list-of-words")[0];
   let wordsContent = listOfWords.getElementsByClassName("words");
   let wordTitle = document.getElementsByClassName("word-title");
@@ -134,7 +156,6 @@ function addElement() {
   document.querySelector(".input-name").value = "";
 }
 
-
 function deleteNavigationWord(evt) {
   evt.currentTarget.parentElement.remove();
   valueofLastItem = getValueOfLastItem();
@@ -160,3 +181,25 @@ function addListeners() {
     .querySelector(".input-name")
     .addEventListener("keypress", useEnterToCreateNewWord);
 }
+// examplesssss
+// document.getElementById("more-examples").addEventListener("click", myFun);
+// const moreExample = document.querySelectorAll(".more-examples p");
+
+// document.getElementById("more-examples").innerHTML;
+// function myFun() {
+//   let textBtn = document.getElementById("more-examples");
+//   let heightExamples = document.getElementById("first-example-word");
+//   if (textBtn.innerHTML === "Wiecej") {
+//     for (const it of moreExample) {
+//       it.style.display = "block";
+//     }
+//     heightExamples.style.height = "200px";
+//     textBtn.innerHTML = "Mniej";
+//   } else if (textBtn.innerHTML === "Mniej") {
+//     for (const it of moreExample) {
+//       it.style.display = "none";
+//     }
+//     heightExamples.style.height = "35%";
+//     textBtn.innerHTML = "Wiecej";
+//   }
+// }

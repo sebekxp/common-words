@@ -6545,12 +6545,6 @@ const OBJWORDS = [
   },
 
   {
-    wordName: "Congress",
-    wordTranslate: "Kongres",
-    examples: []
-  },
-
-  {
     wordName: "consider",
     wordTranslate: "rozważać",
     examples: [
@@ -7793,12 +7787,6 @@ const OBJWORDS = [
       "postgraduate degree",
       "There has been no cross examination of the Claimant with a view to establishing what degree of contributory negligence should be attributed to him."
     ]
-  },
-
-  {
-    wordName: "Democrat",
-    wordTranslate: "Demokrata",
-    examples: []
   },
 
   {
@@ -20847,12 +20835,6 @@ const OBJWORDS = [
   },
 
   {
-    wordName: "n't",
-    wordTranslate: "n't",
-    examples: []
-  },
-
-  {
     wordName: "number",
     wordTranslate: "numer",
     examples: [
@@ -21186,16 +21168,6 @@ const OBJWORDS = [
   },
 
   {
-    wordName: "oh",
-    wordTranslate: "O",
-    examples: [
-      "oh, shut up",
-      "oh, shut up",
-      "Oh no, there's only back seats left!"
-    ]
-  },
-
-  {
     wordName: "oil",
     wordTranslate: "olej",
     examples: [
@@ -21230,12 +21202,6 @@ const OBJWORDS = [
       "Neither is a panacea, but both reduce pollution and cut demand for oil and other fossil fuels.",
       "this beautiful area is threatened by oil exploration"
     ]
-  },
-
-  {
-    wordName: "ok",
-    wordTranslate: "dobrze",
-    examples: []
   },
 
   {
@@ -21756,11 +21722,11 @@ const OBJWORDS = [
     ]
   },
 
-  {
-    wordName: "others",
-    wordTranslate: "inni",
-    examples: []
-  },
+  // {
+  //   wordName: "others",
+  //   wordTranslate: "inni",
+  //   examples: []
+  // },
 
   {
     wordName: "our",
@@ -26029,12 +25995,6 @@ const OBJWORDS = [
       "twenty parents, picked to represent a cross section of Scottish life",
       "Sometimes he is also assisted by an adjunct who will later represent him during absences."
     ]
-  },
-
-  {
-    wordName: "Republican",
-    wordTranslate: "Republikański",
-    examples: []
   },
 
   {
@@ -32003,10 +31963,9 @@ const OBJWORDS = [
   },
 
   {
-    wordName: "they can tell us themselves",
-    wordTranslate: "then",
+    wordName: "then",
+    wordTranslate: "następnie",
     examples: [
-      "następnie",
       "first he was good and then he wasn't",
       "Phoebe by then was exhausted",
       "Till tomorrow then !",
@@ -32114,11 +32073,11 @@ const OBJWORDS = [
     ]
   },
 
-  {
-    wordName: "these",
-    wordTranslate: "te",
-    examples: []
-  },
+  // {
+  //   wordName: "these",
+  //   wordTranslate: "te",
+  //   examples: []
+  // },
 
   {
     wordName: "they",
@@ -32305,11 +32264,11 @@ const OBJWORDS = [
     ]
   },
 
-  {
-    wordName: "those",
-    wordTranslate: "te",
-    examples: []
-  },
+  // {
+  //   wordName: "those",
+  //   wordTranslate: "te",
+  //   examples: []
+  // },
 
   {
     wordName: "though",
@@ -33569,11 +33528,11 @@ const OBJWORDS = [
     ]
   },
 
-  {
-    wordName: "TV",
-    wordTranslate: "telewizja",
-    examples: ["anything good on TV tonight?", "anything good on TV tonight?"]
-  },
+  // {
+  //   wordName: "TV",
+  //   wordTranslate: "telewizja",
+  //   examples: ["anything good on TV tonight?", "anything good on TV tonight?"]
+  // },
 
   {
     wordName: "two",
