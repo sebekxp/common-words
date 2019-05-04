@@ -60,18 +60,17 @@ function hoverMouseAndDisplayWordContent(evt) {
 }
 
 function createContentOfWord({ wordName, wordTranslate, examples }) {
-  // const paragraph = document.createElement("p");
   const keyWordHeader = document.createElement("div");
   const headerH2 = document.createElement("h2");
   const firstExampleWords = document.createElement("div");
   const moreExamples = document.createElement("div");
-  let wordContentContainer = document.querySelector(".word-content");
+  const wordContentContainer = document.querySelector(".word-content");
 
   wordContDivIn.push(document.createElement("div"));
 
-  let exampleContents = [examples.length];
+  let exampleContents;
   let example = examples;
-  for (var i = 0; i < 3; i++) {
+  for (var i = 0; i < examples.length; i++) {
     exampleContents = document.createElement("p");
     example[i] = example[i].split(" ");
     for (let j = 0; j < example[i].length; j++) {
@@ -85,7 +84,6 @@ function createContentOfWord({ wordName, wordTranslate, examples }) {
   }
   exampleContainers = document.createElement("div");
 
-
   exampleContainers.className = "examples-container";
   keyWordHeader.className = "key-word-header";
   keyWordHeader.id = "key-word-header";
@@ -94,12 +92,13 @@ function createContentOfWord({ wordName, wordTranslate, examples }) {
   firstExampleWords.id = "first-example-word";
   moreExamples.id = "more-examples";
   moreExamples.className = "more-examples";
+  moreExamples.innerHTML = "More examples";
 
   keyWordHeader.appendChild(headerH2);
   exampleContainers.appendChild(keyWordHeader);
   exampleContainers.appendChild(firstExampleWords);
   exampleContainers.appendChild(moreExamples);
-  if(wordName!== 'a')
+  if (wordName !== "a")
     wordContDivIn[wordContDivIn.length - 1].style.display = "none";
   wordContDivIn[wordContDivIn.length - 1].appendChild(exampleContainers);
   wordContentContainer.appendChild(wordContDivIn[wordContDivIn.length - 1]);
@@ -182,24 +181,24 @@ function addListeners() {
     .addEventListener("keypress", useEnterToCreateNewWord);
 }
 // examplesssss
-// document.getElementById("more-examples").addEventListener("click", myFun);
-// const moreExample = document.querySelectorAll(".more-examples p");
+document.getElementById("more-examples").addEventListener("click", moreExamplesBtn);
 
-// document.getElementById("more-examples").innerHTML;
-// function myFun() {
-//   let textBtn = document.getElementById("more-examples");
-//   let heightExamples = document.getElementById("first-example-word");
-//   if (textBtn.innerHTML === "Wiecej") {
-//     for (const it of moreExample) {
-//       it.style.display = "block";
-//     }
-//     heightExamples.style.height = "200px";
-//     textBtn.innerHTML = "Mniej";
-//   } else if (textBtn.innerHTML === "Mniej") {
-//     for (const it of moreExample) {
-//       it.style.display = "none";
-//     }
-//     heightExamples.style.height = "35%";
-//     textBtn.innerHTML = "Wiecej";
-//   }
-// }
+function moreExamplesBtn() {
+  const moreExample = document.querySelectorAll(".more-examples p");
+  let textBtn = document.getElementById("more-examples");
+
+  let heightExamples = document.getElementById("first-example-word");
+  if (textBtn.innerHTML === "Wiecej") {
+    for (const it of moreExample) {
+      it.style.display = "block";
+    }
+    heightExamples.style.height = "200px";
+    textBtn.innerHTML = "Mniej";
+  } else if (textBtn.innerHTML === "Mniej") {
+    for (const it of moreExample) {
+      it.style.display = "none";
+    }
+    heightExamples.style.height = "35%";
+    textBtn.innerHTML = "Wiecej";
+  }
+}
