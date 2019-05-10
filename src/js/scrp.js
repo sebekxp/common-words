@@ -3,10 +3,10 @@ const words = OBJWORDS;
 let wordContDivIn = [];
 
 document.querySelector("#complete").innerHTML = 0 + " / " + valueofLastItem;
+createContentOfWord(words[0]);
 
 for (let word of words) {
   createNavigationWord(word);
-  createContentOfWord(word);
 }
 
 function createNavigationWord(wordObj) {
@@ -48,13 +48,16 @@ function updateProgressBar() {
     KNOW_WORDS.length + " / " + valueofLastItem;
   document.querySelector(".progBar").style.width = WIDTH + "%";
 }
-
+function removeElement(str) {
+  let wordContent = document.querySelector(".word-content");
+  let element = document.getElementsByClassName(str);
+  wordContent.removeChild(element[0]);
+}
 function hoverMouseAndDisplayWordContent(evt) {
   for (let i = 0; i < words.length; i++) {
     if (words[i].wordName === evt.target.innerHTML) {
-      wordContDivIn[i].style.display = "";
-    } else {
-      wordContDivIn[i].style.display = "none";
+      removeElement("examples-container");
+      createContentOfWord(words[i]);
     }
   }
 }
@@ -66,12 +69,13 @@ function createContentOfWord({ wordName, wordTranslate, examples }) {
   const moreExamples = document.createElement("div");
   const wordContentContainer = document.querySelector(".word-content");
 
-  wordContDivIn.push(document.createElement("div"));
-
   let exampleContents;
   let example = examples;
+  let firstFourExample = 4;
+  let sumHeight = 0;
   for (var i = 0; i < examples.length; i++) {
     exampleContents = document.createElement("p");
+    exampleContents.id = "fst";
     example[i] = example[i].split(" ");
     for (let j = 0; j < example[i].length; j++) {
       if (example[i][j] === wordName) {
@@ -81,27 +85,40 @@ function createContentOfWord({ wordName, wordTranslate, examples }) {
     example[i] = example[i].join(" ");
     exampleContents.innerHTML = example[i];
     firstExampleWords.appendChild(exampleContents);
-  }
-  exampleContainers = document.createElement("div");
 
+    // if (firstFourExample) {
+    //   let exmp = document.getElementById("fst").style.height;
+    //   sumHeight  += exmp
+    //   firstFourExample--;
+    //   if (!firstFourExample)
+    //     document.getElementsByClassName(
+    //       ".first-example-word"
+    //     )[0].style.height = sumHeight ;
+    // }
+  }
+
+  exampleContainers = document.createElement("div");
   exampleContainers.className = "examples-container";
+
   keyWordHeader.className = "key-word-header";
   keyWordHeader.id = "key-word-header";
+
   headerH2.innerHTML = wordName + " - " + wordTranslate;
+
   firstExampleWords.className = "first-example-word";
   firstExampleWords.id = "first-example-word";
+
   moreExamples.id = "more-examples";
   moreExamples.className = "more-examples";
   moreExamples.innerHTML = "More examples";
 
   keyWordHeader.appendChild(headerH2);
+
   exampleContainers.appendChild(keyWordHeader);
   exampleContainers.appendChild(firstExampleWords);
   exampleContainers.appendChild(moreExamples);
-  if (wordName !== "a")
-    wordContDivIn[wordContDivIn.length - 1].style.display = "none";
-  wordContDivIn[wordContDivIn.length - 1].appendChild(exampleContainers);
-  wordContentContainer.appendChild(wordContDivIn[wordContDivIn.length - 1]);
+
+  wordContentContainer.appendChild(exampleContainers);
 }
 
 function searchWord() {
@@ -181,7 +198,9 @@ function addListeners() {
     .addEventListener("keypress", useEnterToCreateNewWord);
 }
 // examplesssss
-document.getElementById("more-examples").addEventListener("click", moreExamplesBtn);
+document
+  .getElementById("more-examples")
+  .addEventListener("click", moreExamplesBtn);
 
 function moreExamplesBtn() {
   const moreExample = document.querySelectorAll(".more-examples p");
