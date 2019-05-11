@@ -269,6 +269,10 @@ span {
           align-items: center;
 }
 
+.key-word-header h2 {
+  margin: 10px 0;
+}
+
 .first-example-word {
   border-top: 1px solid grey;
   width: 100%;
@@ -278,6 +282,7 @@ span {
 
 .first-example-word p {
   margin: 15px 0;
+  padding: 0 5px;
 }
 
 .more-examples {
@@ -292,11 +297,16 @@ span {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
+  height: 45.2px;
   margin-left: -1px;
   border: 1px solid grey;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   margin-bottom: 20px;
+}
+
+.more-examples:hover {
+  text-decoration: underline;
 }
 
 .word-content-container-div {

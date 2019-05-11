@@ -1,6 +1,5 @@
 let valueofLastItem = getValueOfLastItem();
 const words = OBJWORDS;
-let wordContDivIn = [];
 
 document.querySelector("#complete").innerHTML = 0 + " / " + valueofLastItem;
 createContentOfWord(words[0]);
@@ -23,7 +22,7 @@ function createNavigationWord(wordObj) {
   deleteElemI.className = "deleteElem fas fa-times";
 
   blankCircleDiv.addEventListener("click", progresBar);
-  circleIconDiv.addEventListener("click", deleteNavigationWord);
+  circleIconDiv.addEventListener("cli`ck", deleteNavigationWord);
 
   wordNameDiv.innerHTML = wordObj.wordName;
   navigationWord.addEventListener("mouseover", hoverMouseAndDisplayWordContent);
@@ -71,11 +70,9 @@ function createContentOfWord({ wordName, wordTranslate, examples }) {
 
   let exampleContents;
   let example = examples;
-  let firstFourExample = 4;
-  let sumHeight = 0;
   for (var i = 0; i < examples.length; i++) {
     exampleContents = document.createElement("p");
-    exampleContents.id = "fst";
+    exampleContents.className = "exampleContents";
     example[i] = example[i].split(" ");
     for (let j = 0; j < example[i].length; j++) {
       if (example[i][j] === wordName) {
@@ -85,19 +82,9 @@ function createContentOfWord({ wordName, wordTranslate, examples }) {
     example[i] = example[i].join(" ");
     exampleContents.innerHTML = example[i];
     firstExampleWords.appendChild(exampleContents);
-
-    // if (firstFourExample) {
-    //   let exmp = document.getElementById("fst").style.height;
-    //   sumHeight  += exmp
-    //   firstFourExample--;
-    //   if (!firstFourExample)
-    //     document.getElementsByClassName(
-    //       ".first-example-word"
-    //     )[0].style.height = sumHeight ;
-    // }
   }
 
-  exampleContainers = document.createElement("div");
+  const exampleContainers = document.createElement("div");
   exampleContainers.className = "examples-container";
 
   keyWordHeader.className = "key-word-header";
@@ -119,6 +106,15 @@ function createContentOfWord({ wordName, wordTranslate, examples }) {
   exampleContainers.appendChild(moreExamples);
 
   wordContentContainer.appendChild(exampleContainers);
+
+  let firstFourExamples = document.getElementsByClassName("exampleContents");
+  let heightExamples = 0;
+
+  heightExamples += firstFourExamples[0].getBoundingClientRect().height+30;
+  heightExamples += firstFourExamples[1].getBoundingClientRect().height+15;
+  heightExamples += firstFourExamples[2].getBoundingClientRect().height+15;
+  firstExampleWords.style.height = heightExamples + "px";
+
 }
 
 function searchWord() {
@@ -203,9 +199,9 @@ document
   .addEventListener("click", moreExamplesBtn);
 
 function moreExamplesBtn() {
+  console.log("xd")
   const moreExample = document.querySelectorAll(".more-examples p");
   let textBtn = document.getElementById("more-examples");
-
   let heightExamples = document.getElementById("first-example-word");
   if (textBtn.innerHTML === "Wiecej") {
     for (const it of moreExample) {
