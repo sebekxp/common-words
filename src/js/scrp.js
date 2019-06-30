@@ -1,10 +1,11 @@
 let valueOfLastItem = getValueOfLastItem();
 // eslint-disable-next-line no-undef
 const words = OBJWORDS;
+let ctxOfPage = "examples";
 
 document.querySelector("#complete").innerHTML = 0 + " / " + valueOfLastItem;
-// console.log(valueOfLastItem);
-createContentOfWord(words[0]);
+if (ctxOfPage === "examples")
+    createContentOfWord(words[0]);
 
 for (let word of words) {
     createNavigationWord(word);
@@ -50,17 +51,23 @@ function updateProgressBar() {
     document.querySelector(".progBar").style.width = WIDTH + "%";
 }
 
-function removeElement(str) {
+function removeElement() {
     let wordContent = document.querySelector(".word-content");
-    let element = document.getElementsByClassName(str);
-    wordContent.removeChild(element[0]);
+    let element = document.getElementsByClassName("examples-container");
+    if (element.length !== 0)
+        wordContent.removeChild(element[0]);
 }
 
 function hoverMouseAndDisplayWordContent(evt) {
     for (let i = 0; i < words.length; i++) {
         if (words[i].wordName === evt.target.innerHTML) {
-            removeElement("examples-container");
-            createContentOfWord(words[i]);
+            if (ctxOfPage === "examples") {
+                removeElement();
+                createContentOfWord(words[i]);
+
+            } else {
+                removeElement();
+            }
         }
     }
 }
@@ -197,6 +204,15 @@ function addListeners() {
     document
         .querySelector(".input-name")
         .addEventListener("keypress", useEnterToCreateNewWord);
+
+    document.querySelector('.examples').addEventListener('click', () => {
+        createContentOfWord(words[0]);
+        ctxOfPage = "examples";
+    });
+    document.querySelector('.flash-cards').addEventListener('click', () => {
+        removeElement();
+        ctxOfPage = "flash-cards"
+    })
 }
 
 // example's

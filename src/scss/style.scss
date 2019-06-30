@@ -76,6 +76,7 @@ nav {
   background-color: #cccccc;
   flex-direction: column;
   text-align: center;
+  width: 230px;
 }
 
 .progresBar {
@@ -102,10 +103,31 @@ span {
 
 .list-of-words {
   box-sizing: border-box;
-  background-color: #DD8735;
+  background-color: #f1f1f1;
   width: 230px;
   height: 348px;
   overflow: auto;
+}
+
+.example-flashcards-progbar-container {
+  display: flex;
+  background-color: blue;
+  flex-direction: row;
+  width: 800px;
+}
+
+.flash-cards {
+  height: 52.6px;
+  background-color: #28a745;
+  text-align: center;
+  width: 100px;
+}
+
+.examples {
+  text-align: center;
+  height: 52.6px;
+  background-color: #dc3545;
+  width: 100px;
 }
 
 .navigation-word {
@@ -148,8 +170,10 @@ span {
 .word-content {
   background-color: #fff;
   flex-direction: column;
+  margin-top: 52px;
   border: 1px solid #ccc;
-  height: 449.39px;
+  //height: 449.39px;
+  height: 399.39px;
   padding: 0 30px;
   width: 700px;
   overflow: auto;
