@@ -10,7 +10,27 @@ if (ctxOfPage === "examples")
 for (let word of words) {
     createNavigationWord(word);
 }
+function createFlashCards({wordName, wordTranslate}) {
+    const flipContainer = document.createElement("div");
+    const flippable = document.createElement("div");
+    const frontFlashCards = document.createElement("div");
+    const backFlashCards = document.createElement("div");
 
+    flipContainer.className = "flip-container";
+    flippable.className = "flippable";
+    frontFlashCards.className = "front";
+    backFlashCards.className = "back";
+
+    frontFlashCards.innerHTML = wordName;
+    backFlashCards.innerHTML = wordTranslate;
+
+    const wordContent = document.querySelector(".word-content");
+    flippable.appendChild(frontFlashCards);
+    flippable.appendChild(backFlashCards);
+    flipContainer.appendChild(flippable);
+    wordContent.appendChild(flipContainer);
+
+}
 function createNavigationWord(wordObj) {
     const navigationWord = document.createElement("div");
     const circleIconDiv = document.createElement("div");
@@ -72,6 +92,7 @@ function hoverMouseAndDisplayWordContent(evt) {
 
             } else {
                 removeElement();
+                createFlashCards();
             }
         }
     }
