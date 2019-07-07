@@ -16,22 +16,27 @@ function createNavigationWord(wordObj) {
     const circleIconDiv = document.createElement("div");
     const blankCircleDiv = document.createElement("p");
     const wordNameDiv = document.createElement("p");
-    const deleteElemI = document.createElement("i");
+    const deleteElemIcon = document.createElement("i");
+    const favElemIcon = document.createElement("i");
 
     navigationWord.className = "navigation-word";
     circleIconDiv.className = "circle-icon";
     blankCircleDiv.className = "blank-circle far fa-circle";
     wordNameDiv.className = "words";
-    deleteElemI.className = "deleteElem fas fa-times";
+    deleteElemIcon.className = "deleteElem fas fa-times";
+    favElemIcon.className = "far fa-star";
+
 
     blankCircleDiv.addEventListener("click", progresBar);
     circleIconDiv.addEventListener("click", deleteNavigationWord);
 
     wordNameDiv.innerHTML = wordObj.wordName;
     navigationWord.addEventListener("mouseover", hoverMouseAndDisplayWordContent);
-    circleIconDiv.appendChild(deleteElemI);
+    circleIconDiv.appendChild(deleteElemIcon);
     navigationWord.appendChild(circleIconDiv);
     navigationWord.appendChild(blankCircleDiv);
+    // navigationWord.appendChild(favElemIcon);
+    wordNameDiv.appendChild(favElemIcon);
     navigationWord.appendChild(wordNameDiv);
 
     document.querySelector(".list-of-words").appendChild(navigationWord);
@@ -144,6 +149,7 @@ function searchWord() {
     }
 }
 
+
 function progresBar(evt) {
     if (evt.target.classList[1] === "far") {
         evt.target.className =
@@ -206,12 +212,17 @@ function addListeners() {
         .addEventListener("keypress", useEnterToCreateNewWord);
 
     document.querySelector('.examples').addEventListener('click', () => {
-        createContentOfWord(words[0]);
+        if (ctxOfPage === "flash-cards")
+            createContentOfWord(words[0]);
         ctxOfPage = "examples";
     });
     document.querySelector('.flash-cards').addEventListener('click', () => {
         removeElement();
         ctxOfPage = "flash-cards"
+    });
+    document.querySelector('.favorites').addEventListener('click', () => {
+        removeElement();
+        ctxOfPage = "favorites";
     })
 }
 

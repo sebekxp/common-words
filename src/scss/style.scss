@@ -22,6 +22,7 @@ h1 {
 .deleteElem {
   font-size: 15px;
   color: $delete-elem-color;
+  padding: 20px;
 }
 
 .circle-icon {
@@ -37,6 +38,18 @@ h1 {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
 }
 
+.fa-star:before {
+  display: none;
+  color: #FFD700;
+}
+
+.fa-star:hover {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: red;
+  content: "f005";
+}
+
 .circle-icon:hover {
   background-color: #dc3545;
 }
@@ -50,6 +63,10 @@ h1 {
 .navigation-word:hover {
   .circle-icon {
     display: flex;
+  }
+
+  .fa-star:before {
+    display: block;
   }
 }
 
@@ -120,14 +137,37 @@ span {
   height: 52.6px;
   background-color: #28a745;
   text-align: center;
-  width: 100px;
+  width: 120px;
+  clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+  margin-left: -20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 15px;
+}
+
+.favorites {
+  height: 52.6px;
+  background-color: coral;
+  text-align: center;
+  width: 120px;
+  clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+  margin-left: -20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 15px;
 }
 
 .examples {
   text-align: center;
   height: 52.6px;
   background-color: #dc3545;
-  width: 100px;
+  width: 135px;
+  clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .navigation-word {
@@ -150,12 +190,15 @@ span {
 
 .words {
   font-size: 20px;
-  padding: 11.8px 11.6px;
   width: 100%;
   cursor: pointer;
   border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  padding: 11.8px 33px 11.8px 11.6px;
   background-color: rgb(215, 215, 215);
 }
+
 
 .blank-circle,
 .filled-circle {
