@@ -20,10 +20,13 @@ function createFlashCards({wordName, wordTranslate}) {
     flippable.className = "flippable";
     frontFlashCards.className = "front";
     backFlashCards.className = "back";
+    
+    flippable.addEventListener("click", function(){
+        this.classList.toggle("flipme");
+    });
 
     frontFlashCards.innerHTML = wordName;
     backFlashCards.innerHTML = wordTranslate;
-
     const wordContent = document.querySelector(".word-content");
     flippable.appendChild(frontFlashCards);
     flippable.appendChild(backFlashCards);
@@ -85,14 +88,14 @@ function removeElement() {
 
 function hoverMouseAndDisplayWordContent(evt) {
     for (let i = 0; i < words.length; i++) {
-        if (words[i].wordName === evt.target.innerHTML) {
+        if (words[i].wordName === evt.target.innerText) {
             if (ctxOfPage === "examples") {
                 removeElement();
                 createContentOfWord(words[i]);
 
             } else {
                 removeElement();
-                createFlashCards();
+                createFlashCards(words[0]);
             }
         }
     }
