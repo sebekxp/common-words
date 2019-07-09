@@ -1,4 +1,4 @@
-const OBJWORDS = [
+export const OBJWORDS = [
     {
         wordName: "a",
         wordTranslate: "za",
