@@ -4,6 +4,8 @@ import {calcHeightOfExamplesBox} from "./utils";
 import {ctxOfPage} from "./utils";
 import {removeElement} from "./utils";
 import {createFlashCards} from "./flashCards";
+export {hoverMouseAndDisplayWordContent}
+
 // Content of words are created dynamical
 // only if user hover right element.
 // We want to see the first example right after
@@ -11,15 +13,15 @@ import {createFlashCards} from "./flashCards";
 createContentOfWord(words[0]);
 
 function createContentOfWord({wordName, wordTranslate, examples}) {
-    const keyWordHeader = document.createElement("div");
-    const headerH2 = document.createElement("h2");
-    const firstExampleWords = document.createElement("div");
-    const moreExamples = document.createElement("div");
+    const keyWordHeader = window.document.createElement("div");
+    const headerH2 = window.document.createElement("h2");
+    const firstExampleWords = window.document.createElement("div");
+    const moreExamples = window.document.createElement("div");
 
     let exampleContents;
     let example = examples;
     for (let i = 0; i < examples.length; i++) {
-        exampleContents = document.createElement("p");
+        exampleContents = window.document.createElement("p");
         exampleContents.className = "exampleContents";
         example[i] = example[i].split(" ");
         for (let j = 0; j < example[i].length; j++) {
@@ -32,7 +34,7 @@ function createContentOfWord({wordName, wordTranslate, examples}) {
         firstExampleWords.appendChild(exampleContents);
     }
 
-    const exampleContainers = document.createElement("div");
+    const exampleContainers = window.document.createElement("div");
     exampleContainers.className = "examples-container";
 
     keyWordHeader.className = "key-word-header";
@@ -48,7 +50,7 @@ function createContentOfWord({wordName, wordTranslate, examples}) {
     moreExamples.innerHTML = "Wiecej";
 
     moreExamples.addEventListener("click", moreExamplesBtn);
-    const wordContentContainer = document.querySelector(".word-content");
+    const wordContentContainer = window.document.querySelector(".word-content");
 
     keyWordHeader.appendChild(headerH2);
     exampleContainers.appendChild(keyWordHeader);
@@ -76,9 +78,9 @@ function hoverMouseAndDisplayWordContent(evt) {
 }
 
 function moreExamplesBtn() {
-    const allExamples = document.querySelectorAll(".more-examples p");
-    const textBtn = document.getElementById("more-examples");
-    const heightExamples = document.getElementById("first-example-word");
+    const allExamples = window.document.querySelectorAll(".more-examples p");
+    const textBtn = window.document.getElementById("more-examples");
+    const heightExamples = window.document.getElementById("first-example-word");
 
     if (textBtn.innerHTML === "Wiecej") {
 
@@ -109,10 +111,3 @@ function showLessExamples(allExamples) {
     }
 }
 
-// examplesCtx LISTENER
-document.querySelector(".examples").addEventListener("click", () => {
-    removeElement("flip-container");
-    if (ctxOfPage === "flash-cards" || ctxOfPage === "favorites")
-        createContentOfWord(words[0]);
-    ctxOfPage = "examples";
-});

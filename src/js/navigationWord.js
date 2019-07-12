@@ -1,18 +1,19 @@
 import {valueOfLastItem} from "./utils";
 import {getValueOfLastItem} from "./utils";
 import {OBJWORDS as words} from "./objectWord";
+import {hoverMouseAndDisplayWordContent} from "./contentOfWord";
 
 for (let word of words) {
     createNavigationWord(word);
 }
 
 function createNavigationWord(wordObj) {
-    const navigationWord = document.createElement("div");
-    const circleIconDiv = document.createElement("div");
-    const blankCircleDiv = document.createElement("p");
-    const wordNameDiv = document.createElement("p");
-    const deleteElemIcon = document.createElement("i");
-    const favElemIcon = document.createElement("i");
+    const navigationWord = window.document.createElement("div");
+    const circleIconDiv = window.document.createElement("div");
+    const blankCircleDiv = window.document.createElement("p");
+    const wordNameDiv = window.document.createElement("p");
+    const deleteElemIcon = window.document.createElement("i");
+    const favElemIcon = window.document.createElement("i");
 
     navigationWord.className = "navigation-word";
     circleIconDiv.className = "circle-icon";
@@ -33,7 +34,7 @@ function createNavigationWord(wordObj) {
     wordNameDiv.appendChild(favElemIcon);
     navigationWord.appendChild(wordNameDiv);
 
-    document.querySelector(".list-of-words").appendChild(navigationWord);
+    window.document.querySelector(".list-of-words").appendChild(navigationWord);
     valueOfLastItem = getValueOfLastItem();
     updateProgressBar();
 }
@@ -56,7 +57,7 @@ function deleteNavigationWord(evt) {
 }
 
 function addNewElement() {
-    const inputValue = document.querySelector(".input-name").value;
+    const inputValue = window.document.querySelector(".input-name").value;
     if (inputValue === "") {
         words.push({
             wordName: "default name",
@@ -69,15 +70,15 @@ function addNewElement() {
         });
     // When we add new element it has [words.length - 1] index
     createNavigationWord(words[words.length - 1]);
-    document.querySelector(".input-name").value = "";
+    window.document.querySelector(".input-name").value = "";
 }
 
 function updateProgressBar() {
-    const KNOW_WORDS = document.querySelectorAll(".filled-circle");
+    const KNOW_WORDS = window.document.querySelectorAll(".filled-circle");
     const currentProgress = getCurrentProgress(KNOW_WORDS);
 
     currentProgressInNumber(KNOW_WORDS.length);
-    document.querySelector(".progBar").style.width = currentProgress + "%";
+    window.document.querySelector(".progBar").style.width = currentProgress + "%";
 }
 
 function getCurrentProgress(KNOW_WORDS) {
@@ -88,7 +89,7 @@ function getCurrentProgress(KNOW_WORDS) {
 }
 
 function currentProgressInNumber(numOfKnownWords) {
-    document.querySelector("#complete").innerHTML =
+    window.document.querySelector("#complete").innerHTML =
         numOfKnownWords + " / " + valueOfLastItem;
 }
 
@@ -98,14 +99,28 @@ function useEnterToCreateNewWord() {
     }
 }
 
+(function setNumberOfLoadedWords(numOfWords) {
+    window.document.querySelector("#complete").innerHTML = 0 + " / " + numOfWords;
+})(valueOfLastItem);
+
 // addNewElement LISTENER
-document
+window.document
     .querySelector(".circle-icon-add-element")
     .addEventListener("click", addNewElement);
 
 // useEnterToCreateNewWord LISTENER
-document
+window.document
     .querySelector(".input-name")
     .addEventListener("keypress", useEnterToCreateNewWord);
 
+// deleteNavigationWord LISTENER
+const allCircleIcon = window.document.querySelectorAll(".circle-icon");
+for (let i = 0; i < allCircleIcon.length; i++) {
+    allCircleIcon[i].addEventListener("click", deleteNavigationWord);
+}
 
+// allBlankCircle LISTENER
+const allBlankCircle = window.document.querySelectorAll(".blank-circle");
+for (let i = 0; i < allBlankCircle.length; i++) {
+    allBlankCircle[i].addEventListener("click", progresBar);
+}

@@ -1,13 +1,13 @@
 function searchWord() {
     // We use toUpperCase because we
     // want to ignore case sensitive
-    let searchBoxValue = document
+    let searchBoxValue = window.document
         .getElementById("search-box")
         .value.toUpperCase();
 
-    const listOfWords = document.getElementsByClassName("list-of-words")[0];
+    const listOfWords = window.document.getElementsByClassName("list-of-words")[0];
     const words = listOfWords.getElementsByClassName("words");
-    const wordTitle = document.getElementsByClassName("navigation-word");
+    const wordTitle = window.document.getElementsByClassName("navigation-word");
 
     for (let i = 0; i < words.length; i++) {
         const wordText = words[i].innerHTML.toUpperCase();
@@ -18,3 +18,6 @@ function searchWord() {
         }
     }
 }
+
+// searchWord LISTENER
+window.document.querySelector("#search-box").addEventListener("keyup", searchWord);

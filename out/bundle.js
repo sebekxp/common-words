@@ -1,4 +1,286 @@
-export  {OBJWORDS}
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/js/contentOfWord.js");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./src/js/contentOfWord.js":
+/*!*********************************!*\
+  !*** ./src/js/contentOfWord.js ***!
+  \*********************************/
+/*! exports provided: hoverMouseAndDisplayWordContent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hoverMouseAndDisplayWordContent", function() { return hoverMouseAndDisplayWordContent; });
+/* harmony import */ var _objectWord__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./objectWord */ "./src/js/objectWord.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils */ "./src/js/utils.js");
+/* harmony import */ var _flashCards__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./flashCards */ "./src/js/flashCards.js");
+
+
+
+
+
+
+
+
+// Content of words are created dynamical
+// only if user hover right element.
+// We want to see the first example right after
+// loading the page without hovering on element
+createContentOfWord(_objectWord__WEBPACK_IMPORTED_MODULE_0__["OBJWORDS"][0]);
+
+function createContentOfWord({wordName, wordTranslate, examples}) {
+    const keyWordHeader = window.document.createElement("div");
+    const headerH2 = window.document.createElement("h2");
+    const firstExampleWords = window.document.createElement("div");
+    const moreExamples = window.document.createElement("div");
+
+    let exampleContents;
+    let example = examples;
+    for (let i = 0; i < examples.length; i++) {
+        exampleContents = window.document.createElement("p");
+        exampleContents.className = "exampleContents";
+        example[i] = example[i].split(" ");
+        for (let j = 0; j < example[i].length; j++) {
+            if (example[i][j] === wordName) {
+                example[i][j] = "<b>" + example[i][j] + "</b>";
+            }
+        }
+        example[i] = example[i].join(" ");
+        exampleContents.innerHTML = example[i];
+        firstExampleWords.appendChild(exampleContents);
+    }
+
+    const exampleContainers = window.document.createElement("div");
+    exampleContainers.className = "examples-container";
+
+    keyWordHeader.className = "key-word-header";
+    keyWordHeader.id = "key-word-header";
+
+    headerH2.innerHTML = wordName + " - " + wordTranslate;
+
+    firstExampleWords.className = "first-example-word";
+    firstExampleWords.id = "first-example-word";
+
+    moreExamples.id = "more-examples";
+    moreExamples.className = "more-examples";
+    moreExamples.innerHTML = "Wiecej";
+
+    moreExamples.addEventListener("click", moreExamplesBtn);
+    const wordContentContainer = window.document.querySelector(".word-content");
+
+    keyWordHeader.appendChild(headerH2);
+    exampleContainers.appendChild(keyWordHeader);
+    exampleContainers.appendChild(firstExampleWords);
+    exampleContainers.appendChild(moreExamples);
+    wordContentContainer.appendChild(exampleContainers);
+
+    const heightExamples = Object(_utils__WEBPACK_IMPORTED_MODULE_1__["calcHeightOfExamplesBox"])();
+    firstExampleWords.style.height = heightExamples + "px";
+}
+
+function hoverMouseAndDisplayWordContent(evt) {
+    for (let i = 0; i < _objectWord__WEBPACK_IMPORTED_MODULE_0__["OBJWORDS"].length; i++) {
+        if (_objectWord__WEBPACK_IMPORTED_MODULE_0__["OBJWORDS"][i].wordName === evt.target.innerText) {
+            if (_utils__WEBPACK_IMPORTED_MODULE_1__["ctxOfPage"] === "examples") {
+                Object(_utils__WEBPACK_IMPORTED_MODULE_1__["removeElement"])("examples-container");
+                createContentOfWord(_objectWord__WEBPACK_IMPORTED_MODULE_0__["OBJWORDS"][i]);
+
+            } else if (_utils__WEBPACK_IMPORTED_MODULE_1__["ctxOfPage"] === "flash-cards") {
+                Object(_utils__WEBPACK_IMPORTED_MODULE_1__["removeElement"])("flip-container");
+                Object(_flashCards__WEBPACK_IMPORTED_MODULE_2__["createFlashCards"])(_objectWord__WEBPACK_IMPORTED_MODULE_0__["OBJWORDS"][i]);
+            }
+        }
+    }
+}
+
+function moreExamplesBtn() {
+    const allExamples = window.document.querySelectorAll(".more-examples p");
+    const textBtn = window.document.getElementById("more-examples");
+    const heightExamples = window.document.getElementById("first-example-word");
+
+    if (textBtn.innerHTML === "Wiecej") {
+
+        showMoreExamples(allExamples);
+        const heightExamp = Object(_utils__WEBPACK_IMPORTED_MODULE_1__["calcHeightOfGivenExample"])();
+        heightExamples.style.height = heightExamp + "px";
+        textBtn.innerHTML = "Mniej";
+
+    } else if (textBtn.innerHTML === "Mniej") {
+
+        showLessExamples(allExamples);
+        const heightExamp = Object(_utils__WEBPACK_IMPORTED_MODULE_1__["calcHeightOfExamplesBox"])();
+        heightExamples.style.height = heightExamp + "px";
+        textBtn.innerHTML = "Wiecej";
+
+    }
+}
+
+function showMoreExamples(allExamples) {
+    for (const it of allExamples) {
+        it.style.display = "block";
+    }
+}
+
+function showLessExamples(allExamples) {
+    for (const it of allExamples) {
+        it.style.display = "none";
+    }
+}
+
+
+
+/***/ }),
+
+/***/ "./src/js/flashCards.js":
+/*!******************************!*\
+  !*** ./src/js/flashCards.js ***!
+  \******************************/
+/*! exports provided: createFlashCards */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createFlashCards", function() { return createFlashCards; });
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils */ "./src/js/utils.js");
+/* harmony import */ var _objectWord__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./objectWord */ "./src/js/objectWord.js");
+
+
+
+
+
+
+
+function createFlashCards({wordName, wordTranslate}) {
+    const flipContainer = window.document.createElement("div");
+    const flippable = window.document.createElement("div");
+    const frontFlashCards = window.document.createElement("div");
+    const backFlashCards = window.document.createElement("div");
+
+    flipContainer.className = "flip-container";
+    flippable.className = "flippable";
+    frontFlashCards.className = "front";
+    backFlashCards.className = "back";
+
+    frontFlashCards.innerHTML = wordName;
+    backFlashCards.innerHTML = wordTranslate;
+
+    flippable.addEventListener("click", function () {
+        this.classList.toggle("flipme");
+    });
+
+    const wordContent = window.document.querySelector(".word-content");
+
+    flippable.appendChild(frontFlashCards);
+    flippable.appendChild(backFlashCards);
+    flipContainer.appendChild(flippable);
+    wordContent.appendChild(flipContainer);
+}
+
+// flash-cardsCtx LISTENER
+window.document.querySelector(".flash-cards").addEventListener("click", () => {
+    Object(_utils__WEBPACK_IMPORTED_MODULE_0__["removeElement"])("examples-container");
+    if (_utils__WEBPACK_IMPORTED_MODULE_0__["ctxOfPage"] === "examples" || _utils__WEBPACK_IMPORTED_MODULE_0__["ctxOfPage"] === "favorites")
+        createFlashCards(_objectWord__WEBPACK_IMPORTED_MODULE_1__["OBJWORDS"][0]); ctxOfPage = "flash-cards";
+});
+
+/***/ }),
+
+/***/ "./src/js/objectWord.js":
+/*!******************************!*\
+  !*** ./src/js/objectWord.js ***!
+  \******************************/
+/*! exports provided: OBJWORDS */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OBJWORDS", function() { return OBJWORDS; });
+
 const OBJWORDS = [
     {
         wordName: "a",
@@ -36458,3 +36740,69 @@ const OBJWORDS = [
         ]
     }
 ];
+
+
+/***/ }),
+
+/***/ "./src/js/utils.js":
+/*!*************************!*\
+  !*** ./src/js/utils.js ***!
+  \*************************/
+/*! exports provided: calcHeightOfGivenExample, calcHeightOfExamplesBox, ctxOfPage, valueOfLastItem, getValueOfLastItem, removeElement */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "calcHeightOfGivenExample", function() { return calcHeightOfGivenExample; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "calcHeightOfExamplesBox", function() { return calcHeightOfExamplesBox; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ctxOfPage", function() { return ctxOfPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "valueOfLastItem", function() { return valueOfLastItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getValueOfLastItem", function() { return getValueOfLastItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeElement", function() { return removeElement; });
+
+
+
+
+
+
+
+let ctxOfPage = "examples";
+let valueOfLastItem = getValueOfLastItem();
+
+function calcHeightOfGivenExample() {
+    const examples = window.document.getElementsByClassName("exampleContents");
+    let heightExamp = examples[0].getBoundingClientRect().height + 30;
+
+    for (let i = 0; i < examples.length; i++) {
+        heightExamp += examples[i].getBoundingClientRect().height + 15;
+    }
+    return heightExamp;
+}
+
+function calcHeightOfExamplesBox() {
+    let firstThreeExamples = window.document.getElementsByClassName("exampleContents");
+    let heightExamples = 0;
+    heightExamples += firstThreeExamples[0].getBoundingClientRect().height + 30;
+    heightExamples += firstThreeExamples[1].getBoundingClientRect().height + 15;
+    heightExamples += firstThreeExamples[2].getBoundingClientRect().height + 15;
+
+    return heightExamples;
+}
+
+function getValueOfLastItem() {
+    return window.document.querySelectorAll(".navigation-word").length;
+}
+
+function removeElement(className) {
+    const wordContent = window.document.querySelector(".word-content");
+    const element = window.document.getElementsByClassName(className);
+    if (element.length !== 0)
+        wordContent.removeChild(element[0]);
+}
+
+
+
+/***/ })
+
+/******/ });
+//# sourceMappingURL=bundle.js.map

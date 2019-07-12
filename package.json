@@ -4,14 +4,44 @@
   "description": "",
   "main": "scrp.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack --mode development --watch",
+    "build": "webpack --mode production",
+    "start": "webpack --config webpack.config.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^5.16.0"
+    "eslint": "^5.16.0",
+    "presets": "es2015",
+    "webpack": "^4.35.3",
+    "webpack-cli": "^3.3.5",
+    "babel": "^5.8.23",
+    "babel-core": "^5.0.0",
+    "babel-loader": "^5.3.2"
   },
   "dependencies": {
-    "node-sass": "^4.12.0"
+    "@babel/plugin-transform-modules-commonjs": "^7.5.0",
+    "@babel/polyfill": "^7.4.4",
+    "commonjs": "0.0.1",
+    "core-js": "^3.1.4",
+    "install": "^0.13.0",
+    "module": "^1.2.5",
+    "node-sass": "^4.12.0",
+    "npm": "^6.10.0"
+  },
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "removeComments": false,
+    "noImplicitAny": false,
+    "lib": [
+      "es2016",
+      "dom",
+      "es5"
+    ]
   }
 }
