@@ -2,18 +2,27 @@ const path = require("path");
 
 module.exports = {
     entry: {
-        a: "D:\\Projekty\\COMMON\\common-words\\src\\js\\contentOfWord.js",
-        b: "D:\\Projekty\\COMMON\\common-words\\src\\js\\favorites.js",
-        c: "D:\\Projekty\\COMMON\\common-words\\src\\js\\flashCards.js",
-        d: "D:\\Projekty\\COMMON\\common-words\\src\\js\\navigationWord.js",
-        e: "D:\\Projekty\\COMMON\\common-words\\src\\js\\searchBox.js",
-        f: "D:\\Projekty\\COMMON\\common-words\\src\\js\\utils.js"
+        bundle: ["./src/js/navigationWord.js",
+            "./src/js/favorites.js",
+            "./src/js/searchBox.js",
+            "./src/js/flashCards.js",
+            "./src/js/contentOfWord.js",
+            "./src/js/utils.js",
+            "./src/js/examples.js"
+        ]
     },
     output: {
-        path: path.resolve(__dirname, "./out"),
-        filename: "bundle.js"
+        path: path.resolve(__dirname, "./dist"),
+        filename: "[name].js"
     },
     watch: false,
     mode: "development",
-    devtool: "source-map",
+    module: {
+        rules: [
+            {
+                exclude: [
+                    path.resolve(__dirname, "./src/js/objectWord.js")]
+            }
+        ]
+    }
 };

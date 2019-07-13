@@ -1,14 +1,11 @@
-export {calcHeightOfGivenExample}
-export {calcHeightOfExamplesBox}
-export {ctxOfPage}
-export {valueOfLastItem}
-export {getValueOfLastItem}
-export {removeElement}
+export let ctxOfPage = "examples";
+export let valueOfLastItem = getValueOfLastItem();
 
-let ctxOfPage = "examples";
-let valueOfLastItem = getValueOfLastItem();
+export function setCtxOfPage(value) {
+    ctxOfPage = value;
+}
 
-function calcHeightOfGivenExample() {
+export function calcHeightOfGivenExample() {
     const examples = window.document.getElementsByClassName("exampleContents");
     let heightExamp = examples[0].getBoundingClientRect().height + 30;
 
@@ -18,7 +15,7 @@ function calcHeightOfGivenExample() {
     return heightExamp;
 }
 
-function calcHeightOfExamplesBox() {
+export function calcHeightOfExamplesBox() {
     let firstThreeExamples = window.document.getElementsByClassName("exampleContents");
     let heightExamples = 0;
     heightExamples += firstThreeExamples[0].getBoundingClientRect().height + 30;
@@ -28,11 +25,11 @@ function calcHeightOfExamplesBox() {
     return heightExamples;
 }
 
-function getValueOfLastItem() {
+export function getValueOfLastItem() {
     return window.document.querySelectorAll(".navigation-word").length;
 }
 
-function removeElement(className) {
+export function removeElement(className) {
     const wordContent = window.document.querySelector(".word-content");
     const element = window.document.getElementsByClassName(className);
     if (element.length !== 0)

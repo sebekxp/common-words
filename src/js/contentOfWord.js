@@ -1,10 +1,7 @@
 import {OBJWORDS as words} from "./objectWord";
-import {calcHeightOfGivenExample} from "./utils";
-import {calcHeightOfExamplesBox} from "./utils";
-import {ctxOfPage} from "./utils";
-import {removeElement} from "./utils";
+import {calcHeightOfExamplesBox, calcHeightOfGivenExample, ctxOfPage, removeElement} from "./utils";
 import {createFlashCards} from "./flashCards";
-export {hoverMouseAndDisplayWordContent}
+
 
 // Content of words are created dynamical
 // only if user hover right element.
@@ -12,7 +9,7 @@ export {hoverMouseAndDisplayWordContent}
 // loading the page without hovering on element
 createContentOfWord(words[0]);
 
-function createContentOfWord({wordName, wordTranslate, examples}) {
+export function createContentOfWord({wordName, wordTranslate, examples}) {
     const keyWordHeader = window.document.createElement("div");
     const headerH2 = window.document.createElement("h2");
     const firstExampleWords = window.document.createElement("div");
@@ -62,13 +59,12 @@ function createContentOfWord({wordName, wordTranslate, examples}) {
     firstExampleWords.style.height = heightExamples + "px";
 }
 
-function hoverMouseAndDisplayWordContent(evt) {
+export function hoverMouseAndDisplayWordContent(evt) {
     for (let i = 0; i < words.length; i++) {
         if (words[i].wordName === evt.target.innerText) {
             if (ctxOfPage === "examples") {
                 removeElement("examples-container");
                 createContentOfWord(words[i]);
-
             } else if (ctxOfPage === "flash-cards") {
                 removeElement("flip-container");
                 createFlashCards(words[i]);

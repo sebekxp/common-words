@@ -1,5 +1,4 @@
 import {valueOfLastItem} from "./utils";
-import {getValueOfLastItem} from "./utils";
 import {OBJWORDS as words} from "./objectWord";
 import {hoverMouseAndDisplayWordContent} from "./contentOfWord";
 
@@ -35,7 +34,7 @@ function createNavigationWord(wordObj) {
     navigationWord.appendChild(wordNameDiv);
 
     window.document.querySelector(".list-of-words").appendChild(navigationWord);
-    valueOfLastItem = getValueOfLastItem();
+    // valueOfLastItem = getValueOfLastItem();
     updateProgressBar();
 }
 
@@ -52,7 +51,7 @@ function progresBar(evt) {
 
 function deleteNavigationWord(evt) {
     evt.currentTarget.parentElement.remove();
-    valueOfLastItem = getValueOfLastItem();
+    // valueOfLastItem = getValueOfLastItem();
     updateProgressBar();
 }
 

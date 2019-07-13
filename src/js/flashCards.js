@@ -1,11 +1,8 @@
-import {removeElement} from "./utils";
-import {ctxOfPage} from "./utils";
+import {ctxOfPage, removeElement, setCtxOfPage} from "./utils";
 import {OBJWORDS as words} from "./objectWord";
 
-export {createFlashCards}
 
-
-function createFlashCards({wordName, wordTranslate}) {
+export function createFlashCards({wordName, wordTranslate}) {
     const flipContainer = window.document.createElement("div");
     const flippable = window.document.createElement("div");
     const frontFlashCards = window.document.createElement("div");
@@ -34,6 +31,9 @@ function createFlashCards({wordName, wordTranslate}) {
 // flash-cardsCtx LISTENER
 window.document.querySelector(".flash-cards").addEventListener("click", () => {
     removeElement("examples-container");
+    removeElement("flip-container");
     if (ctxOfPage === "examples" || ctxOfPage === "favorites")
-        createFlashCards(words[0]); ctxOfPage = "flash-cards";
+        createFlashCards(words[0]);
+    setCtxOfPage("flash-cards");
+
 });

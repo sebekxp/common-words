@@ -8,11 +8,10 @@
     "build": "webpack --mode production",
     "start": "webpack --config webpack.config.js"
   },
-  "author": "",
+  "author": "sebekxp",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^5.16.0",
-    "presets": "es2015",
     "webpack": "^4.35.3",
     "webpack-cli": "^3.3.5",
     "babel": "^5.8.23",
@@ -27,7 +26,7 @@
     "install": "^0.13.0",
     "module": "^1.2.5",
     "node-sass": "^4.12.0",
-    "npm": "^6.10.0"
+    "npm": "^6.10.1"
   },
   "compilerOptions": {
     "target": "es5",
