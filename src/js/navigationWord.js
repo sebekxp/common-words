@@ -56,7 +56,7 @@ function deleteNavigationWord(evt) {
 }
 
 function addNewElement() {
-    const inputValue = window.document.querySelector(".input-name").value;
+    const inputValue = window.document.querySelector(".add-new-elem-input").value;
     if (inputValue === "") {
         words.push({
             wordName: "default name",
@@ -69,7 +69,7 @@ function addNewElement() {
         });
     // When we add new element it has [words.length - 1] index
     createNavigationWord(words[words.length - 1]);
-    window.document.querySelector(".input-name").value = "";
+    window.document.querySelector(".add-new-elem-input").value = "";
 }
 
 function updateProgressBar() {
@@ -109,7 +109,7 @@ window.document
 
 // useEnterToCreateNewWord LISTENER
 window.document
-    .querySelector(".input-name")
+    .querySelector(".add-new-elem-input")
     .addEventListener("keypress", useEnterToCreateNewWord);
 
 // deleteNavigationWord LISTENER

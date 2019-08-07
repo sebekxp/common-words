@@ -35,5 +35,18 @@ window.document.querySelector(".flash-cards").addEventListener("click", () => {
     if (ctxOfPage === "examples" || ctxOfPage === "favorites")
         createFlashCards(words[0]);
     setCtxOfPage("flash-cards");
+});
 
+function isFocusOutsideOfTheInputBox() {
+    const isFocusOnSearchBox = document.activeElement.className === "search-box";
+    const isFocusOnAddNewElemInput = document.activeElement.className === "add-new-elem-input";
+    const isFocusOutsideOfTheInputBox = !(isFocusOnSearchBox || isFocusOnAddNewElemInput);
+
+    return isFocusOutsideOfTheInputBox;
+}
+
+window.addEventListener("keypress", function (e) {
+    if (e.code === "Space" && ctxOfPage === "flash-cards" && isFocusOutsideOfTheInputBox()) {
+        document.querySelector(".flippable").classList.toggle("flipme");
+    }
 });
