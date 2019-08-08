@@ -70,13 +70,33 @@ h1 {
   }
 }
 
-.search-box {
-  font-size: 18px;
-  padding: 10px;
-  border: 2px solid #ddd;
+.search-box-container {
+  width: 250px;
   margin-bottom: 10px;
   margin-top: 50px;
-  width: 250px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: white;
+
+  .search-box {
+    font-size: 18px;
+    padding: 10px;
+    width: 90%;
+  }
+
+  .search-box-container-delete-icon {
+    width: 10%;
+    display: none;
+    background-color: transparent;
+  }
+}
+
+.search-box-container:hover {
+  .search-box-container-delete-icon {
+    display: block;
+  }
 }
 
 section {
