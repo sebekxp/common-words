@@ -20,4 +20,9 @@ function searchWord() {
 }
 
 // searchWord LISTENER
-window.document.querySelector("#search-box").addEventListener("keyup", searchWord);
+document.querySelector("#search-box").addEventListener("keyup", searchWord);
+
+// Clean input when 'X' is clicked.
+document.getElementById("search-box-container-delete-icon").addEventListener("click", () => {
+    document.getElementById("search-box").value = "";
+});

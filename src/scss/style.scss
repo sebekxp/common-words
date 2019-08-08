@@ -82,22 +82,27 @@ h1 {
 
   .search-box {
     font-size: 18px;
-    padding: 10px;
-    width: 90%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    width: 95%;
+    color: black;
+    border: 0;
+  }
+
+  .search-box:focus {
+    outline: none;
   }
 
   .search-box-container-delete-icon {
-    width: 10%;
-    display: none;
-    background-color: transparent;
+    padding: 5px 10px;
+  }
+
+  .search-box-container-delete-icon:hover {
+    transform: scale(1.15);
   }
 }
 
-.search-box-container:hover {
-  .search-box-container-delete-icon {
-    display: block;
-  }
-}
 
 section {
   width: 800px;
