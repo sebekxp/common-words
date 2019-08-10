@@ -46,8 +46,7 @@ h1 {
 .fa-star:hover {
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
-  color: red;
-  content: "f005";
+  //content: "f005";
 }
 
 .circle-icon:hover {
@@ -96,10 +95,12 @@ h1 {
 
   .search-box-container-delete-icon {
     padding: 5px 10px;
+    color: #606060;
   }
 
   .search-box-container-delete-icon:hover {
     transform: scale(1.15);
+    color: #000;
   }
 }
 

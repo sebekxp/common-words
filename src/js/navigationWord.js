@@ -1,12 +1,13 @@
 import {valueOfLastItem} from "./utils";
 import {OBJWORDS as words} from "./objectWord";
 import {hoverMouseAndDisplayWordContent} from "./contentOfWord";
+import {addFavElemToArray} from "./favorites";
 
 for (let word of words) {
     createNavigationWord(word);
 }
 
-function createNavigationWord(wordObj) {
+export function createNavigationWord(wordObj) {
     const navigationWord = window.document.createElement("div");
     const circleIconDiv = window.document.createElement("div");
     const blankCircleDiv = window.document.createElement("p");
@@ -24,6 +25,7 @@ function createNavigationWord(wordObj) {
     blankCircleDiv.addEventListener("click", progresBar);
     circleIconDiv.addEventListener("click", deleteNavigationWord);
     navigationWord.addEventListener("mouseover", hoverMouseAndDisplayWordContent);
+    favElemIcon.addEventListener("click", addFavElemToArray);
 
     wordNameDiv.innerHTML = wordObj.wordName;
 

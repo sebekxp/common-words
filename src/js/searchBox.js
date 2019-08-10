@@ -4,6 +4,7 @@ function searchWord() {
     let searchBoxValue = window.document
         .getElementById("search-box")
         .value.toUpperCase();
+    searchBoxValue = deleteAllSpacesOnEndOfString(searchBoxValue);
 
     const listOfWords = window.document.getElementsByClassName("list-of-words")[0];
     const words = listOfWords.getElementsByClassName("words");
@@ -19,10 +20,21 @@ function searchWord() {
     }
 }
 
+function deleteAllSpacesOnEndOfString(str) {
+    for (let i = str.length - 1; i >= 0; i--) {
+        if (str[i] !== " ")
+            break;
+        else if (str[i] === " ")
+            str[i] = "";
+    }
+    return str;
+}
+
 // searchWord LISTENER
 document.querySelector("#search-box").addEventListener("keyup", searchWord);
 
 // Clean input when 'X' is clicked.
 document.getElementById("search-box-container-delete-icon").addEventListener("click", () => {
     document.getElementById("search-box").value = "";
+    searchWord();
 });
