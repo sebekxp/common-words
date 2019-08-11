@@ -1,4 +1,4 @@
-import {valueOfLastItem} from "./utils";
+import {createPopup, valueOfLastItem} from "./utils";
 import {OBJWORDS as words} from "./objectWord";
 import {hoverMouseAndDisplayWordContent} from "./contentOfWord";
 import {addFavElemToArray} from "./favorites";
@@ -44,16 +44,18 @@ function progresBar(evt) {
     if (evt.target.classList[1] === "far") {
         evt.target.className =
             evt.target.classList[0] + " filled-circle fas fa-check-circle";
+        createPopup(evt, "Marked as known word")
     } else {
         evt.target.className =
             evt.target.classList[0] + " blank-circle far fa-circle";
+        createPopup(evt, "Marked as unknown word")
     }
     updateProgressBar();
 }
 
 function deleteNavigationWord(evt) {
     evt.currentTarget.parentElement.remove();
-    // valueOfLastItem = getValueOfLastItem();
+    createPopup(evt, "The item has been deleted");
     updateProgressBar();
 }
 

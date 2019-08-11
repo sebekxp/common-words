@@ -36,3 +36,15 @@ export function removeElement(className) {
         wordContent.removeChild(element[0]);
 }
 
+export function createPopup(evt, str) {
+    const popup = window.document.createElement("span");
+    popup.className = "popup";
+    popup.innerText = str;
+    popup.style.left = evt.x + 15 + "px";
+    popup.style.top = evt.y - 40 + "px";
+    document.body.appendChild(popup);
+
+    setTimeout(() => {
+        document.getElementsByClassName("popup")[0].remove();
+    }, 800)
+}

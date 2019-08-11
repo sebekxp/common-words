@@ -1,4 +1,4 @@
-import {removeElement, setCtxOfPage} from "./utils";
+import {removeElement, setCtxOfPage, createPopup} from "./utils";
 import {OBJWORDS as words} from "./objectWord";
 import {createNavigationWord} from "./navigationWord";
 
@@ -6,7 +6,12 @@ import {createNavigationWord} from "./navigationWord";
 export const favWords = [];
 
 export function addFavElemToArray(evt) {
-    favWords.push(evt.currentTarget.parentElement.textContent);
+    if (favWords.includes(evt.currentTarget.parentElement.textContent))
+        createPopup(evt, "Is already in your favorite words");
+    else {
+        createPopup(evt, "Added to favorite words");
+        favWords.push(evt.currentTarget.parentElement.textContent);
+    }
 }
 
 function createFavNavigationWords() {
