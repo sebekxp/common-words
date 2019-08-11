@@ -90,13 +90,15 @@ h1 {
   color: #000;
 }
 
-section {
-  width: 800px;
+.main-container {
+  width: 68.75rem;
   display: flex;
+  background-color: #28a745;
+  flex-wrap: wrap;
 }
 
-aside {
-  width: 230px;
+.navigation-word-container {
+  flex-basis: 25%;
 }
 
 nav {
@@ -104,7 +106,7 @@ nav {
   background-color: #cccccc;
   flex-direction: column;
   text-align: center;
-  width: 230px;
+  flex-basis: 25%;
 }
 
 .progresBar {
@@ -132,16 +134,14 @@ span {
 .list-of-words {
   box-sizing: border-box;
   background-color: #f1f1f1;
-  width: 230px;
   height: 348px;
   overflow: auto;
 }
 
-.example-flashcards-progbar-container {
+.bookmarks-bar {
   display: flex;
   background-color: blue;
-  flex-direction: row;
-  width: 800px;
+  flex-basis: 75%;
 }
 
 .flash-cards {
@@ -220,14 +220,8 @@ span {
 
 .word-content {
   background-color: #fff;
-  flex-direction: column;
-  margin-top: 52px;
-  border: 1px solid #ccc;
-  height: 399.39px;
-  padding: 0 30px;
-  width: 700px;
+  flex-basis: 75%;
   overflow: auto;
-  position: relative;
 }
 .word-content p {
   margin: 30px 0;
