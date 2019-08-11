@@ -46,7 +46,6 @@ h1 {
 .fa-star:hover {
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
-  //content: "f005";
 }
 
 .circle-icon:hover {
@@ -106,8 +105,8 @@ h1 {
 
 .main-container {
   width: 68.75rem;
+  height: 35rem;
   display: flex;
-  background-color: #28a745;
   flex-wrap: wrap;
 }
 
@@ -148,8 +147,7 @@ span {
 .list-of-words {
   box-sizing: border-box;
   background-color: #f1f1f1;
-  //width: 230px;
-  height: 348px;
+  height: 450px;
   overflow: auto;
 }
 
@@ -157,11 +155,9 @@ span {
   display: flex;
   background-color: blue;
   flex-basis: 75%;
-  //flex-direction: row;
 }
 
 .flash-cards {
-  height: 52.6px;
   background-color: #28a745;
   text-align: center;
   width: 120px;
@@ -174,7 +170,6 @@ span {
 }
 
 .favorites {
-  height: 52.6px;
   background-color: coral;
   text-align: center;
   width: 120px;
@@ -188,7 +183,6 @@ span {
 
 .examples {
   text-align: center;
-  height: 52.6px;
   background-color: #dc3545;
   width: 135px;
   clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
@@ -239,14 +233,10 @@ span {
 
 .word-content {
   background-color: #fff;
-  //flex-direction: column;
-  //margin-top: 52px;
-  //border: 1px solid #ccc;
-  //padding-left: 30px;
-  //width: 100%;
+  padding: 0 30px;
+  box-sizing: border-box;
   flex-basis: 75%;
   overflow: auto;
-  //position: relative;
 
   p {
     margin: 30px 0;
@@ -254,8 +244,9 @@ span {
 }
 
 .add-new-elem-input {
-  width: 160px;
+  flex-basis: 80%;
   height: 30px;
+  margin-right: 10%;
   border-radius: 3px;
   padding: 0 3px;
   font-size: 16px;
@@ -364,7 +355,6 @@ span {
   perspective: 1000;
   margin-left: 60px;
   margin-top: 100px;
-  //float: left;
   cursor: pointer;
 
   .flippable {
