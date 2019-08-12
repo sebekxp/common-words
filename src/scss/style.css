@@ -366,6 +366,14 @@ span {
   justify-content: center;
   align-items: center;
 }
+.front .fa-star:before, .back .fa-star:before {
+  display: block;
+  position: absolute;
+  font-size: 1.3rem;
+  color: #FFD700;
+  top: 10px;
+  right: 10px;
+}
 
 .front {
   z-index: 2;

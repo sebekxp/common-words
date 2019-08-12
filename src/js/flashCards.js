@@ -28,6 +28,7 @@ export function createFlashCards({wordName, wordTranslate}) {
     const wordContent = window.document.querySelector(".word-content");
 
     frontFlashCards.appendChild(favElemIcon);
+    backFlashCards.appendChild(favElemIcon);
     flippable.appendChild(frontFlashCards);
     flippable.appendChild(backFlashCards);
     flipContainer.appendChild(flippable);
