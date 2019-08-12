@@ -1,5 +1,6 @@
 import {ctxOfPage, removeElement, setCtxOfPage} from "./utils";
 import {OBJWORDS as words} from "./objectWord";
+import {addFavElemToArray} from "./favorites";
 
 
 export function createFlashCards({wordName, wordTranslate}) {
@@ -7,21 +8,26 @@ export function createFlashCards({wordName, wordTranslate}) {
     const flippable = window.document.createElement("div");
     const frontFlashCards = window.document.createElement("div");
     const backFlashCards = window.document.createElement("div");
+    const favElemIcon = window.document.createElement("i");
+
 
     flipContainer.className = "flip-container";
     flippable.className = "flippable";
     frontFlashCards.className = "front";
     backFlashCards.className = "back";
+    favElemIcon.className = "far fa-star";
 
     frontFlashCards.innerHTML = wordName;
     backFlashCards.innerHTML = wordTranslate;
 
+    favElemIcon.addEventListener("click", addFavElemToArray);
     flippable.addEventListener("click", function () {
         this.classList.toggle("flipme");
     });
 
     const wordContent = window.document.querySelector(".word-content");
 
+    frontFlashCards.appendChild(favElemIcon);
     flippable.appendChild(frontFlashCards);
     flippable.appendChild(backFlashCards);
     flipContainer.appendChild(flippable);

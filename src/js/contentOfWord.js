@@ -62,7 +62,7 @@ export function createContentOfWord({wordName, wordTranslate, examples}) {
 export function hoverMouseAndDisplayWordContent(evt) {
     for (let i = 0; i < words.length; i++) {
         if (words[i].wordName === evt.target.innerText) {
-            if (ctxOfPage === "examples") {
+            if (ctxOfPage === "examples" || ctxOfPage === "favorites") {
                 removeElement("examples-container");
                 createContentOfWord(words[i]);
             } else if (ctxOfPage === "flash-cards") {
