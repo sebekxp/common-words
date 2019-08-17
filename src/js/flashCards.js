@@ -8,27 +8,33 @@ export function createFlashCards({wordName, wordTranslate}) {
     const flippable = window.document.createElement("div");
     const frontFlashCards = window.document.createElement("div");
     const backFlashCards = window.document.createElement("div");
-    const favElemIcon = window.document.createElement("i");
+    const favElemIconFront = window.document.createElement("i");
+    const favElemIconBack = window.document.createElement("i");
 
 
     flipContainer.className = "flip-container";
     flippable.className = "flippable";
     frontFlashCards.className = "front";
     backFlashCards.className = "back";
-    favElemIcon.className = "far fa-star";
-
+    favElemIconFront.className = "far fa-star";
+    favElemIconFront.title = "Add to favorites words";
+    favElemIconBack.className = "far fa-star";
+    favElemIconBack.title = "Add to favorites words";
     frontFlashCards.innerHTML = wordName;
     backFlashCards.innerHTML = wordTranslate;
 
-    favElemIcon.addEventListener("click", addFavElemToArray);
-    flippable.addEventListener("click", function () {
-        this.classList.toggle("flipme");
+    favElemIconFront.addEventListener("click", addFavElemToArray);
+    favElemIconBack.addEventListener("click", addFavElemToArray);
+    flippable.addEventListener("click", function (e) {
+        if (e.target.className !== "far fa-star") {
+            this.classList.toggle("flipme");
+        }
     });
 
     const wordContent = window.document.querySelector(".word-content");
 
-    frontFlashCards.appendChild(favElemIcon);
-    backFlashCards.appendChild(favElemIcon);
+    frontFlashCards.appendChild(favElemIconFront);
+    backFlashCards.appendChild(favElemIconBack);
     flippable.appendChild(frontFlashCards);
     flippable.appendChild(backFlashCards);
     flipContainer.appendChild(flippable);

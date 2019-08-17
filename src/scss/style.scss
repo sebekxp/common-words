@@ -38,10 +38,11 @@ h1 {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
 }
 
-.fa-star:before {
+.fa-star::before {
   display: none;
   color: #FFD700;
 }
+
 
 .fa-star:hover {
   font-family: "Font Awesome 5 Free";
@@ -63,7 +64,7 @@ h1 {
     display: flex;
   }
 
-  .fa-star:before {
+  .fa-star::before {
     display: block;
   }
 }
@@ -388,7 +389,7 @@ span {
   justify-content: center;
   align-items: center;
 
-  .fa-star:before {
+  .fa-star::before {
     display: block;
     position: absolute;
     font-size: 1.3rem;
@@ -410,11 +411,12 @@ span {
 }
 
 .popup {
-  background-color: #d7d7d7;
+  background-color: #555;
   position: absolute;
   padding: 7px 7px;
   border-radius: 6px;
   animation: fadeIn 0.6s;
+  color: #ffffff;
 }
 
 @keyframes fadeIn {
@@ -425,6 +427,7 @@ span {
     opacity: 1;
   }
 }
+
 .popup::after {
   content: "";
   position: absolute;
@@ -433,5 +436,6 @@ span {
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: #d7d7d7 transparent transparent transparent;
+  border-color: #555 transparent transparent transparent;
 }
+

@@ -18,9 +18,13 @@ export function createNavigationWord(wordObj) {
     navigationWord.className = "navigation-word";
     circleIconDiv.className = "circle-icon";
     blankCircleDiv.className = "blank-circle far fa-circle";
+    blankCircleDiv.title = "Mark as known word"
     wordNameDiv.className = "words";
     deleteElemIcon.className = "deleteElem fas fa-times";
+    deleteElemIcon.title = "Delete word"
     favElemIcon.className = "far fa-star";
+    favElemIcon.title = "Add to favorites words";
+
 
     blankCircleDiv.addEventListener("click", progresBar);
     circleIconDiv.addEventListener("click", deleteNavigationWord);
