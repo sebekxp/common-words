@@ -18,10 +18,10 @@ export function createNavigationWord(wordObj) {
     navigationWord.className = "navigation-word";
     circleIconDiv.className = "circle-icon";
     blankCircleDiv.className = "blank-circle far fa-circle";
-    blankCircleDiv.title = "Mark as known word"
+    blankCircleDiv.title = "Mark as known word";
     wordNameDiv.className = "words";
     deleteElemIcon.className = "deleteElem fas fa-times";
-    deleteElemIcon.title = "Delete word"
+    deleteElemIcon.title = "Delete word";
     favElemIcon.className = "far fa-star";
     favElemIcon.title = "Add to favorites words";
 
@@ -40,7 +40,6 @@ export function createNavigationWord(wordObj) {
     navigationWord.appendChild(wordNameDiv);
 
     window.document.querySelector(".list-of-words").appendChild(navigationWord);
-    // valueOfLastItem = getValueOfLastItem();
     updateProgressBar();
 }
 

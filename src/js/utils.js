@@ -40,7 +40,8 @@ export function createPopup(evt, str) {
     const popup = window.document.createElement("span");
     popup.className = "popup";
     popup.innerText = str;
-    popup.style.left = evt.x + 15 + "px";
+
+    popup.style.left = evt.x + "px";
     popup.style.top = evt.y - 40 + "px";
     document.body.appendChild(popup);
 
@@ -48,3 +49,11 @@ export function createPopup(evt, str) {
         document.getElementsByClassName("popup")[0].remove();
     }, 800)
 }
+
+// const nvgWord = document.querySelectorAll(".navigation-word");
+// console.log(nvgWord);
+// [...nvgWord].forEach((el) => {
+//     el.addEventListener("mouseover", () => {
+//         console.log("Elo");
+//     })
+// });

@@ -67,6 +67,10 @@ h1 {
   .fa-star::before {
     display: block;
   }
+
+  p {
+    background-color: #a2a5a2;
+  }
 }
 
 .search-box-container {
@@ -198,12 +202,6 @@ span {
   justify-content: center;
   align-items: center;
   margin-bottom: 2.5px;
-}
-
-.navigation-word:hover {
-  p {
-    background-color: #a2a5a2;
-  }
 }
 
 .navigation-word:nth-of-type(1) {
